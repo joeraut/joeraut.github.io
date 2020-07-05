@@ -1,0 +1,67 @@
++++
+date = "2019-07-07"
+menu = "main"
+title = "Projects"
+type = "about"
+weight = -195
++++
+
+### Some of my projects include..
+
+<!--<div class="row">
+    <div class="col-sm-6" style="background-color: #fcc">
+      a
+    </div>
+    <div class="col-sm-6" style="background-color: #cfc">
+      b
+    </div>
+</div>-->
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="thumbnail">
+      <div class="caption text-center" onclick="location.href='https://flow.microsoft.com/en-us/connectors/shared_slack/slack/'">
+        <div class="position-relative">
+          <img src="https://az818438.vo.msecnd.net/icons/slack.png" style="width:72px;height:72px;" />
+        </div>
+        <h4 id="thumbnail-label"><a href="https://flow.microsoft.com/en-us/connectors/shared_slack/slack/" target="_blank">Microsoft Slack</a></h4>
+        <p><i class="glyphicon glyphicon-user light-red lighter bigger-120"></i>&nbsp;Auditor</p>
+        <div class="thumbnail-description smaller">Slack is a team communication tool, that brings together all of your team communications in one place, instantly searchable and available wherever you go.</div>
+      </div>
+      <div class="caption card-footer text-center">
+        <ul class="list-inline">
+          <li><i class="people lighter"></i>&nbsp;7 Active Users</li>
+          <li></li>
+          <li><i class="glyphicon glyphicon-envelope lighter"></i><a href="#">&nbsp;Help</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-2">&nbsp;</div>
+  </div>
+  <div class="col-md-6">
+    <div class="thumbnail">
+      <div class="caption text-center" onclick="location.href='https://flow.microsoft.com/en-us/connectors/shared_slack/slack/'">
+        <div class="position-relative">
+          <img src="https://az818438.vo.msecnd.net/icons/slack.png" style="width:72px;height:72px;" />
+        </div>
+        <h4 id="thumbnail-label"><a href="https://flow.microsoft.com/en-us/connectors/shared_slack/slack/" target="_blank">Microsoft Slack</a></h4>
+        <p><i class="glyphicon glyphicon-user light-red lighter bigger-120"></i>&nbsp;Auditor</p>
+        <div class="thumbnail-description smaller">Slack is a team communication tool, that brings together all of your team communications in one place, instantly searchable and available wherever you go.</div>
+      </div>
+      <div class="caption card-footer text-center">
+        <ul class="list-inline">
+          <li><i class="people lighter"></i>&nbsp;7 Active Users</li>
+          <li></li>
+          <li><i class="glyphicon glyphicon-envelope lighter"></i><a href="#">&nbsp;Help</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-2">&nbsp;</div>
+  </div>
+</div>
+
+I'm passionate about good code, UI/UX, and machine learning.
+I attend hackathons wherever I can, and enjoy using multiple tools to engineer and build powerful websites and apps.
+I also have fun working with electronics, building and reverse-engineering hardware when I can.
+
+View my code on [GitHub](https://github.com/joeraut), connect with me on [LinkedIn](https://linkedin.com/in/joeraut/), and check out my work and blog below.

@@ -1,0 +1,9 @@
+img {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.intro-header {
+    background-color: #4b56a8;
+}

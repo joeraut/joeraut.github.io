@@ -1,0 +1,30 @@
+name: hugo
+
+on:
+  push:
+    branches: [ source ]
+
+jobs:
+  hugo:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Checkout
+        uses: actions/checkout@v2
+      -
+        name: Run Hugo
+        uses: crazy-max/ghaction-hugo@v1
+        with:
+          version: latest
+          extended: false
+          args: --cleanDestinationDir --verbose
+      -
+        name: Deploy to GitHub Pages
+        if: success()
+        uses: crazy-max/ghaction-github-pages@v2
+        with:
+          target_branch: master
+          build_dir: ./public
+          fqdn: joeraut.com
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

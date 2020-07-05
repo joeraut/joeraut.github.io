@@ -1,0 +1,50 @@
+baseurl = "https://joeraut.com"
+title = "Joseph Rautenbach"
+
+canonifyurls = true
+paginate = 10
+#theme = "startbootstrap-clean-blog" # using directly in /layouts/, etc. due to modifications
+disableKinds = ["taxonomy", "taxonomyTerm"] # disable tags and categories
+languageCode = "en"
+copyright = "[Source code](https://github.com/joeraut/joeraut.github.io) &middot; Powered by [Hugo](https://gohugo.io/)"
+
+googleAnalytics = "UA-132837754-1" # delete or comment to disable Google Analytics JS generation
+disqusShortname = "devjoe" #delete or comment to disable Disqus comments
+
+
+[author]
+  name = "Joseph Rautenbach"
+
+[params]
+  DateForm = "January 2, 2006" # "Mon, Jan 2, 2006"
+  Description = "Software engineer, Computer Science student, and occasional blogger"
+  DescriptionMeta = "Software engineer and occasional blogger; passionate about good code, information security, IoT and machine learning."
+  Author = "Joseph Rautenbach"
+  postSummariesFrontPage = 5
+  showReadTime = false
+  customCSS = ["/css/custom.css"] # custom CSS
+  Comments = true
+  mainSections = ["posts"]
+  
+
+[[params.social]]
+  title = "linkedin"
+  url = "https://www.linkedin.com/in/joeraut/"
+[[params.social]]
+  title = "github"
+  url = "https://github.com/joeraut"
+[[params.social]]
+  title = "envelope"
+  url = "/contact/"
+[[params.social]]
+  title = "twitter"
+  url = "https://twitter.com/joeraut"
+
+[[menu.main]]
+  name = "home"
+  url = "/"
+  weight = -200
+[[menu.main]]
+  name = "Posts"
+  url = "/posts/"
+  weight = -180
