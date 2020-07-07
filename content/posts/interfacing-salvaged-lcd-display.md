@@ -5,7 +5,7 @@ date: 2013-05-27
 ---
 
 
-![Final](/img/posts/interfacing-salvaged-lcd-display/IMG_07481.jpg "Final")
+![Final](/images/posts/interfacing-salvaged-lcd-display/IMG_07481.jpg "Final")
 
 A few weekends ago I got hold of an old broken Canon printer/scanner combo. It featured a pretty neat looking 20x2 character LCD display. Let's get it working!
 
@@ -18,31 +18,31 @@ As I counted the pins on the ribbon cable I realised that it had 14 pins. This i
 
 ## Wiring it up
 
-![Pinout table](/img/posts/interfacing-salvaged-lcd-display/pinout_table.jpg "Pinout table")
+![Pinout table](/images/posts/interfacing-salvaged-lcd-display/pinout_table.jpg "Pinout table")
 
 Looking at the pinout for normal HD44780-based LCDs, the first three pins are responsible for power and the contrast adjustment. I decided to try to wire up these three pins and see what happens. I connected pin 1 to Ground, pin 2 to +5V and pin 3 as the contrast adjustment through a potentiometer from Ground to 5V.
 
 As expected, the first line went solid black which HD44780 LCDs do before you send them data, which proved my theory. I then spent far too much time in actually getting it to work.
 Here are my initial connections to the printer circuit board that has the ribbon cable connector for the display:
 
-![Breadboard](/img/posts/interfacing-salvaged-lcd-display/IMG_0743.jpg "Breadboard")
-![Breadboard](/img/posts/interfacing-salvaged-lcd-display/IMG_07451.jpg "Breadboard")
+![Breadboard](/images/posts/interfacing-salvaged-lcd-display/IMG_0743.jpg "Breadboard")
+![Breadboard](/images/posts/interfacing-salvaged-lcd-display/IMG_07451.jpg "Breadboard")
 
 I tried connecting up the LCD in 4-bit mode using the LiquidCrystal Arduino library, but only random characters and symbols were displayed on the LCD.
 
-![Junk data](/img/posts/interfacing-salvaged-lcd-display/IMG_0768.jpg "Junk data")
+![Junk data](/images/posts/interfacing-salvaged-lcd-display/IMG_0768.jpg "Junk data")
 
 I knew this meant there was something wrong with the wiring or something else weird, so I tried connecting it up in 8-bit mode and to no avail. I randomly tried swapping pins around until finally when RS and RW were swapped (pin 4 and 5), it came to life!
 
-![Valid text](/img/posts/interfacing-salvaged-lcd-display/IMG_0772.jpg "Valid text")
+![Valid text](/images/posts/interfacing-salvaged-lcd-display/IMG_0772.jpg "Valid text")
 
 I was *quite* happy in knowing this darn thing actually works!
 I built up a small breakout board so it could easily fit on a breadboard. I cut off a section from the printer PCB with the ribbon cable connecter, glued it to the breakout board and soldered connections from it, then put on a small potentiometer for the contrast adjustment.
 Here are some pictures of how it turned out:
 
-![Final](/img/posts/interfacing-salvaged-lcd-display/IMG_07581.jpg "Final")
+![Final](/images/posts/interfacing-salvaged-lcd-display/IMG_07581.jpg "Final")
 
-![Final](/img/posts/interfacing-salvaged-lcd-display/IMG_0760.jpg "Final")
+![Final](/images/posts/interfacing-salvaged-lcd-display/IMG_0760.jpg "Final")
 
 I then decided to do a “mini-project” just to do something semi-useful: a temperature display.
 A quick program was conjured up to read the temperature from a LM35 temperature sensor and display the value to the display (in Celsius). This is what's shown at the top of this post.

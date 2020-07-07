@@ -8,7 +8,7 @@ As a LaTeX user that occasionally needs to use Microsoft Word, I often convert L
 
 I came up with Node.js web app that allows LaTeX math equations to be entered and converted to PNG/JPG/SVG images.
 
-![Homepage](/img/posts/latex-to-image-web/main.png "Main")
+![Homepage](/images/posts/latex-to-image-web/main.png "Main")
 
 
 For each conversion, Node.js starts an isolated Docker container with a LaTeX installation; it compiles the generated `.tex` file and converts it to an SVG vector image. If required, the SVG file is then converted to a raster image format for PNG/JPG.
@@ -28,4 +28,4 @@ The app is up and running at [latex2image.joeraut.com](https://latex2image.joera
 
 The [source code is available on GitHub](https://github.com/joeraut/latex2image-web).
 
-![Equation](/img/posts/latex-to-image-web/equation.svg "Equation")
+![Equation](/images/posts/latex-to-image-web/equation.svg "Equation")

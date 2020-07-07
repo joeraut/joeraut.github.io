@@ -5,7 +5,7 @@ date: 2015-04-03
 ---
 
 
-![Main](/img/posts/peltier-mini-fridge/main.jpg "Main")
+![Main](/images/posts/peltier-mini-fridge/main.jpg "Main")
 
 **Update:** [Project featured on Hackaday.com!](https://hackaday.com/2015/04/03/building-your-own-mini-fridge/)
 
@@ -19,22 +19,22 @@ Watch the video for a full description and how it works. I gotta say, it’s rea
 
 It is built using a Peltier Thermoelectric cooler module which is a ceramic plate but with many p and n-type semiconductors placed in series inside it. Here’s an image of one:
 
-![Peltier TEC](/img/posts/peltier-mini-fridge/peltier_cooler.png "Peltier TEC")
+![Peltier TEC](/images/posts/peltier-mini-fridge/peltier_cooler.png "Peltier TEC")
 
 When powered, it acts as a heat pump where one side becomes extremely cold and the other extremely hot. To make use of the cooling a heatsink will need to be put on the hot side to dissipate the heat which is being removed from the “cold” side.
 When this is done, extremely cold temperatures can be reached. When running at 12V and 3.5A, I measured around –15°C on the bare side, although you could go colder with more heat dissipation on the hot side and a more powerful Peltier cooler module.
 
 With the heatsinks mounted (be sure to use thermal paste!) and a suitable polystyrene enclosure chosen, everything fit together perfectly and worked great.
 
-![Fridge](/img/posts/peltier-mini-fridge/top.jpg "Fridge")
+![Fridge](/images/posts/peltier-mini-fridge/top.jpg "Fridge")
 
 To control temperature a temperature controller was purchased from eBay, here is what it looks like installed:
 
-![Controller](/img/posts/peltier-mini-fridge/temp_controller.png "Controller")
+![Controller](/images/posts/peltier-mini-fridge/temp_controller.png "Controller")
 
 It is powered by the 12V supply and the relay output switches the Peltier cooler module and fans, and can maintain the temperature quite well. Its thermistor probe is located inside the cool box for reading the temperature as seen here (the cylindrical probe on the left):
 
-![Inside](/img/posts/peltier-mini-fridge/inside.jpg "Inside")
+![Inside](/images/posts/peltier-mini-fridge/inside.jpg "Inside")
 
 I powered it using a modified ATX power supply from an old computer, for the 12V output. The fridge draws around 3.5A when the Peltier module is on.
 

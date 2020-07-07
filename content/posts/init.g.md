@@ -2,7 +2,7 @@
 title: "Breaking things at Google's init.g Security Workshop"
 description: "A great learning experience at Google London"
 date: 2019-11-05
-image: "/img/posts/init.g/sunset.jpg"
+image: "/images/posts/init.g/sunset.jpg"
 ---
 
 Over the past weekend I was fortunate enough to attend init.g, an invite-only
@@ -12,7 +12,7 @@ hosted in their London King's Cross office.
 Out of the 40 attendees, I was the only one traveling from South Africa, but I quickly
 met some fantastic folks and Google employees that made the workshop a blast!
 
-![Posting with some cool post-it note art](/img/posts/init.g/stairs.jpg)
+![Posting with some cool post-it note art](/images/posts/init.g/stairs.jpg)
 
 We started the first day with a workshop on binary vulnerabilities, where we exploited buffer and stack
 overflows to do some magic like obtain root shells! (Un)fortunately, these attack vectors
@@ -32,7 +32,7 @@ We then had an additional workshop on Android application hacking, which involve
 Android devices via ADB, decompiling and disassembling APKs, and then reverse-engineering disassembled
 code to find some flags!
 
-![CTF finals](/img/posts/init.g/ctf_finals.jpg)
+![CTF finals](/images/posts/init.g/ctf_finals.jpg)
 *The Google CTF finals taking place*
 
 The init.g event was held at the same time as the onsite final round of the [Google CTF](https://capturetheflag.withgoogle.com/),
@@ -51,19 +51,19 @@ The opportunity to attend these workshops and improve my skills was invaluable, 
 meet some incredibly talented engineers and fellow attendees, and engage in many meaningful and
 thought-provoking discussions. I can't thank the organisers enough for the experience!
 
-![Some amazing office views](/img/posts/init.g/london.jpg)
+![Some amazing office views](/images/posts/init.g/london.jpg)
 *Some non-so-normal office views*
 
-![CTF awards ceremony](/img/posts/init.g/ctf_finals_awards.jpg)
+![CTF awards ceremony](/images/posts/init.g/ctf_finals_awards.jpg)
 *Google CTF Awards Ceremony*
 
-![Office art](/img/posts/init.g/office_art.jpg)
+![Office art](/images/posts/init.g/office_art.jpg)
 *Very creative Post-it Note office art*
 
 <!-- Make the badge image slightly smaller -->
 <div class="row">
     <div class="col-sm-8 col-sm-offset-2">
-        <img src="/img/posts/init.g/badge.jpg" alt="Badge" />
+        <img src="/images/posts/init.g/badge.jpg" alt="Badge" />
         <em>Obligatory badge pic</em>
     </div>
 </div>

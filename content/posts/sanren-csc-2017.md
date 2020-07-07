@@ -13,10 +13,10 @@ A script was whipped up to detect and convert the single-frequency beeps to a bi
 
 Out of eight teams in the finals, we came first place in the Main challenge! Congratulations to the other teams as well as those that won the separate hashing and Snowden challenges. All in all, it was a ton of fun with an awesome team and something I’d definitely do again. Bring it on, 2018!
 
-![Main](/img/posts/sanren-csc-2017/IMG_3502.jpg "Main")
+![Main](/images/posts/sanren-csc-2017/IMG_3502.jpg "Main")
 
-![Main](/img/posts/sanren-csc-2017/image12.jpg "Main")
+![Main](/images/posts/sanren-csc-2017/image12.jpg "Main")
 
 Above: Our BitPhase team members receiving prizes. From left to right: Jonathan Botha, Luke Joshua, Joseph Rautenbach, and Nicolaas Weideman.
 
-![Main](/img/posts/sanren-csc-2017/IMG_3517.jpg "Main")
+![Main](/images/posts/sanren-csc-2017/IMG_3517.jpg "Main")

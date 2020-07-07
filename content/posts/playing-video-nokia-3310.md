@@ -34,11 +34,11 @@ The buttons were connected to the following pins:
 
 Here are some images of the shield I made (I apologise for the messy soldering, I needed this done in a hurry):
 
-![Shield](/img/posts/playing-video-nokia-3310/IMG_3132.JPG "Shield")
+![Shield](/images/posts/playing-video-nokia-3310/IMG_3132.JPG "Shield")
 
-![Shield](/img/posts/playing-video-nokia-3310/IMG_3140.JPG "Shield")
+![Shield](/images/posts/playing-video-nokia-3310/IMG_3140.JPG "Shield")
 
-![Shield](/img/posts/playing-video-nokia-3310/IMG_3141.JPG "Shield")
+![Shield](/images/posts/playing-video-nokia-3310/IMG_3141.JPG "Shield")
 
 ## Playing video
 
@@ -59,7 +59,7 @@ Here are the control characters:
 
 I wrote a Processing script to render a simple 3D Cube and save each frame to a file in the sketch’s project folder using the protocol above (code at the bottom of the page).
 
-![3D Cube](/img/posts/playing-video-nokia-3310/3dcube.png "3D Cube")
+![3D Cube](/images/posts/playing-video-nokia-3310/3dcube.png "3D Cube")
 
 The script saved the data to a file called data.dat.
 Next, I formatted my MicroSD card with the FAT32 format, and copied the data.dat file onto it.
@@ -67,13 +67,13 @@ Next, I formatted my MicroSD card with the FAT32 format, and copied the data.dat
 Writing the Arduino video player program was the most difficult part. I used the SD library included with Arduino to read the files of the SD card and wrote up a file chooser what uses the buttons on the shield, and a routine to read data from the chosen file off the SD card, draw the images and handle the commands.
 Everything worked out OK in the end after a day of work, and I had a working product. However, I still needed to finish my goal of displaying video.
 
-![Shield](/img/posts/playing-video-nokia-3310/IMG_3148.JPG "Shield")
+![Shield](/images/posts/playing-video-nokia-3310/IMG_3148.JPG "Shield")
 
 Next I did some research on Dithering. I then discovered [Windell Oskay’s writeup](http://www.evilmadscientist.com/2012/dithering/) on Atkinson dithering and some Processing sample code. The example converted real-time video from a webcam to 1-bit dithered images – just what we need.
 I then modified the program with a output resolution of 84×48, and gave it a video as the input file. (If you want to use a different file, make sure it is 84×48 with fairly high contrast for best results with the dithering, though any resolution should still work fine.
 For the video, I decided to play the music video of Rick Astley’s “Never Gonna Give You Up” because, [well...](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
 
-![Video processing](/img/posts/playing-video-nokia-3310/video_processing.png "Video processing")
+![Video processing](/images/posts/playing-video-nokia-3310/video_processing.png "Video processing")
 
 ## Source code
 

@@ -8,4 +8,4 @@ I've involved myself in founding the George Education Electronics Engineering & 
 
 Anyone living in the George/Garden Route area of ZA should really check this out. We have a huge variety of people attending from all ages, and are working on some cool things – robots, etc.
 
-![G3ECS Logo](/img/posts/g3ecs-hackerspace/g3ecs.png "G3ECS Logo")
+![G3ECS Logo](/images/posts/g3ecs-hackerspace/g3ecs.png "G3ECS Logo")

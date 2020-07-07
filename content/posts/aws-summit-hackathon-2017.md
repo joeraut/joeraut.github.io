@@ -14,10 +14,10 @@ Here’s a brief video of our setup, and some pics:
   src="https://www.youtube.com/embed/cvipc0s8L7U"
   frameborder="0"></iframe>
 
-![Main](/img/posts/aws-summit-hackathon-2017/IMG_1683.jpg "Main")
+![Main](/images/posts/aws-summit-hackathon-2017/IMG_1683.jpg "Main")
 
-![Main](/img/posts/aws-summit-hackathon-2017/IMG_1677.jpg "Main")
+![Main](/images/posts/aws-summit-hackathon-2017/IMG_1677.jpg "Main")
 
-![Main](/img/posts/aws-summit-hackathon-2017/IMG_1685.jpg "Main")
+![Main](/images/posts/aws-summit-hackathon-2017/IMG_1685.jpg "Main")
 
 The members of team AckerTech, from left to right: Joseph Rautenbach, Matthew Baas, Torsten Babl, and Bradley Fourie.
