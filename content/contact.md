@@ -1,5 +1,4 @@
 +++
-date = "2019-07-07"
 menu = "main"
 title = "Contact"
 type = "contact"
