@@ -1,13 +1,10 @@
 +++
-menu = "main"
 title = "About"
-type = "about"
-weight = -190
 +++
 
-### I'm a software engineer at AWS and Computer Science student at Stellenbosch University.
+**I'm a software engineer at AWS and Computer Science student at Stellenbosch University.**
 
-I find myself passionate about good code, information security, IoT and machine learning, with a burning desire to learn new technologies across the stack.
+I find myself passionate about information security, IoT and machine learning, with a burning desire to learn new technologies across the stack.
 
 On the hobby side, I enjoy putting together fun hardware and software projects, with a particular interest in interactions between hardware and the internet.
 
