@@ -5,7 +5,7 @@ date: 2019-07-08
 ---
 
 I recently moved this site over from Wordpress to [Hugo](https://gohugo.io/), a popular static site generator, and only wish I'd
-had made the switch sooner. (I've also open-sourced the site [on GitHub](https://github.com/joeraut/joeraut.com)!)
+had made the switch sooner. (I've also open-sourced the site [on GitHub](https://github.com/joeraut/joeraut.github.io).)
 
 After years of running Wordpress, I had grown frustrated with the bloated and high-maintenance nature of the CMS that it is.
 Keeping plugins updated and compatible required more time than it was worth, and writing posts became a chore with the constant
