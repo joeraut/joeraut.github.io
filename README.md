@@ -1,18 +1,21 @@
-# [joeraut.com](https://joeraut.com)
+# [joeraut.com](https://joeraut.com/)
 
-The source of my Hugo-based site and blog.
+The source code of my Hugo-based site and blog.
 
 ## Generator
-[Hugo](https://gohugo.io/), a static site generator, is used to convert content (inside `content/`) written with Markdown into HTML
-files along with all the prerequisite assets, and packages them up into a single distribution in `public/`.
+[Hugo](https://gohugo.io/), a static site generator, is used to convert content written with Markdown into HTML files along with
+all the prerequisite assets, and packages them up into a single distribution to be served up to visitors.
 
-To compile, enter the site directory and type `hugo`.
+A GitHub Action is invoked when content is pushed to the `source` branch; it invokes Hugo, compiles the site, and pushes the output
+to the `master` branch, served by GitHub Pages.
+
+## Hosting
+
+GitHub Pages is used to host the site from Hugo-generated content in the `master` branch, pointed to by the custom domain.
 
 ## Theme
-I based the blog off of the beautiful [startbootstrap-clean-blog](https://github.com/UtkarshVerma/startbootstrap-clean-blog)
-theme, with modifications for my needs. The contact form backend is now using [Basin](https://usebasin.com/), along with reCAPTCHA – 
-view [clean-blog.js](static/js/clean-blog.js) for the source.
-The theme files have been directly integrated into the `/layouts/` and `static/` directories, without a separate `themes/` directory.
+I'm using the [MemE](https://github.com/reuixiy/hugo-theme-meme) theme by [reuixiy](https://io-oi.me/). Theme files are located
+in `theme/meme/`.
 
 ## License
 
