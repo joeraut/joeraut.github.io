@@ -807,7 +807,7 @@ uglyURLs = false
     ######################################
     # Headings Anchor
 
-    enableHeadingsAnchor = true
+    enableHeadingsAnchor = false
 
     # Level range of headings
     headingsOpt = "1-6"
