@@ -31,7 +31,7 @@ enableEmoji = false
 footnoteReturnLinkContents = "↩"
 
 # Enable `.GitInfo` object for each page?
-enableGitInfo = true
+enableGitInfo = false
 
 # Enable generation of `robots.txt` file?
 enableRobotsTXT = false
@@ -1067,7 +1067,7 @@ uglyURLs = false
     ######################################
     # Post Gitinfo
 
-    enablePostGitInfo = true
+    enablePostGitInfo = false
 
     displayPostGitInfo = true
     # Note: *global settings*
