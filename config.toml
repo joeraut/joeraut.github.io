@@ -546,8 +546,8 @@ uglyURLs = false
 
     themeColor = "#fff"
     themeColorDark = "#16171d"
-    safariMaskColor = "#2a6df4"
-    msApplicationTileColor = "#fff"
+    safariMaskColor = "#545271"
+    msApplicationTileColor = "#545271"
 
 
     ######################################
