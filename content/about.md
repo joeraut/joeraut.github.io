@@ -2,7 +2,7 @@
 title = "About"
 +++
 
-**I'm a software engineer at AWS and Computer Science student at Stellenbosch University.**
+**I'm a software engineer at AWS and Computer Science student at Stellenbosch University. Oh, and I blog sometimes! 😁**
 
 I find myself passionate about information security, IoT and machine learning, with a burning desire to learn new technologies across the stack.
 
