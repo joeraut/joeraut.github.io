@@ -14,7 +14,7 @@ to the `master` branch, served by GitHub Pages.
 GitHub Pages is used to host the site from Hugo-generated content in the `master` branch, pointed to by the custom domain.
 
 ## Theme
-I'm using the [MemE](https://github.com/reuixiy/hugo-theme-meme) theme by [reuixiy](https://io-oi.me/). Theme files are located
+I'm using the [MemE](https://github.com/reuixiy/hugo-theme-meme) theme by [reuixiy](https://io-oi.me/en/). Theme files are located
 in `theme/meme/`.
 
 ## License
