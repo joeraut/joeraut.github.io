@@ -11,6 +11,9 @@ hasCJKLanguage = false
 # Name of theme
 theme = "meme"
 
+# Disable 404 page generation
+disableKinds = ["404"]
+
 # `hugo new` automatically opened text editor
 newContentEditor = ""
 
