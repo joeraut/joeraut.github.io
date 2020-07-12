@@ -8,6 +8,9 @@ img {
     background-color: #4b56a8;
 }
 
-article {
-    text-align: justify;
+/* Justify text for medium and larger devices */
+@media (min-width: 992px) {
+    article {
+        text-align: justify;
+    }
 }
