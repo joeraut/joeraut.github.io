@@ -1,7 +1,7 @@
 ---
 title: "Displaying smooth-scrolling text on old character LCDs"
 description: "The bleeding edge of ‘80s displays?"
-date: 2020-04-21
+date: 2020-07-12
 ---
 
 {{< youtube Or9oK5yfja8 >}}
