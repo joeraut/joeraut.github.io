@@ -7,3 +7,7 @@ img {
 .intro-header {
     background-color: #4b56a8;
 }
+
+article {
+    text-align: justify;
+}
