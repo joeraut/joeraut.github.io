@@ -28,7 +28,9 @@ disqusShortname = "devjoe" #delete or comment to disable Disqus comments
   msApplicationTileColor = "#545271"
   Comments = true
   mainSections = ["posts"]
-  
+
+[markup.goldmark.renderer]
+  unsafe = true # Allow HTML to be included from Markdown files
 
 [[params.social]]
   title = "linkedin"
