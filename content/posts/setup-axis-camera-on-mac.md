@@ -22,7 +22,6 @@ After a few seconds, a few entries should start showing up in the Console:
 ![Console](/images/posts/setup-axis-camera-on-mac/console.png "Console")
 I censored my camera's ID and MAC address, but we can see some interesting logs containing `DHCP REQUEST`, etc., and an `ACK` (meaning "Acknowledgement sent"), along with an IP address the Mac has allocated for the camera – in my case,  `192.168.2.2`. We can now go ahead and visit that IP address in the browser, and things work perfectly!
 
-![Axis web interface](/images/posts/setup-axis-camera-on-mac/axisweb.png "Axis web interface")
-_Ah, the joys of decade-old web interfaces_
+{{< figure src="/images/posts/setup-axis-camera-on-mac/axisweb.png" title="Ah, the joys of decade-old web interfaces" >}}
 
 Once things are all setup, Internet Sharing can be disabled – but you'll have to re-enable it if you want to reconnect in the same manner. This should work for most other cameras and devices, and is a cool trick Macs (and presumably most other modern OSs) are capable of doing!
