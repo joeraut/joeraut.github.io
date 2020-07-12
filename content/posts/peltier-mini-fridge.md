@@ -4,12 +4,16 @@ description: "A DIY mini fridge built on a budget"
 date: 2015-04-03
 ---
 
-{{< youtube ML7tr-2YvR8 >}}
+
+![Main](/images/posts/peltier-mini-fridge/main.jpg "Main")
 
 **Update:** [Project featured on Hackaday!](https://hackaday.com/2015/04/03/building-your-own-mini-fridge/)
 
 I recently finished up on my Peltier Mini fridge project, and it works great!
-It can cool down whatever you want that’ll fit in it – six 330ml cans for example – and can get down to –2.1°C
+It can cool down whatever you want that’ll fit in it – six 330ml cans for example – and can get down to –2.1°C!
+Watch the video for a full description and how it works. I gotta say, it’s really cool, excuse the pun!
+
+{{< youtube ML7tr-2YvR8 >}}
 
 It is built using a Peltier Thermoelectric cooler module which is a ceramic plate but with many p and n-type semiconductors placed in series inside it. Here’s an image of one:
 
