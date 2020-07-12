@@ -24,7 +24,7 @@ As we use an Arduino, the software written is in C++. Source code available at t
 
 We allocate memory for a canvas that will contain the raw pixel data for the message we want to display. We make use of a
 [5x7-pixel ASCII font](https://github.com/Ameba8195/Arduino/blob/master/hardware_v2/cores/arduino/font5x7.h), and for each ASCII character
-in the message string, we place the corresponding character at the appropriate location on the canvas using `memcpy()`.
+in the message string, we place the corresponding character at the appropriate location on the canvas using the `memcpy` function.
 
 In order to display our canvas on the LCD, we define a function to generate display-ready custom characters by grabbing pixel data from appropriate locations on
 the canvas. For each frame of the scrolling process, we can simply increment the horizontal index of the location on the canvas by one, which results
@@ -32,7 +32,7 @@ in the message on-screen scrolling left by one pixel. These custom characters ar
 
 There was a slight complication I glossed over—the memory structure of custom characters differs to that of the font and canvas. The font and canvas use five
 bytes to represent each character, with each byte representing one 7-pixel column (the most significant bit is ignored). The custom character format,
-however, uses 8 bytes—each representing one row of the character (the 8<sup>*th*</sup> byte is ignored). To solve this issue, we define a function `transpose(byte *dest, byte *src)`
+however, uses 8 bytes—each representing one row of the character (the 8<sup>*th*</sup> byte is ignored). To solve this issue, we define a function `transpose`
 which takes care of mapping the canvas format to the custom character format.
 
 ### Source code
