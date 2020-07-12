@@ -1,0 +1,4 @@
+{{ dateFormat (.Site.Params.DateForm | default "Mon, Jan 2, 2006") .Date }}
+{{ if .Site.Params.ShowReadTime }}
+ &middot; {{ .ReadingTime }} minute read
+{{ end }}
