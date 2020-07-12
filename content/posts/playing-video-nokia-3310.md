@@ -4,11 +4,7 @@ description: "Or: (ab)using monochrome displays"
 date: 2012-12-26
 ---
 
-<!--*Originally published December 26, 2012*-->
-
-<iframe id="ytplayer" type="text/html" width="640" height="360"
-  src="https://www.youtube.com/embed/FJBNF5x1_kA"
-  frameborder="0"></iframe>
+{{< youtube FJBNF5x1_kA >}}
 
 ## Introduction
 The Nokia 3310 LCD is well known in the electronics community; I decided to have some fun and get it to do things the designers probably weren’t intending!

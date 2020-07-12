@@ -10,9 +10,7 @@ We designed a prototype of a notification system for a cold room refrigeration s
 
 Here’s a brief video of our setup, and some pics:
 
-<iframe id="ytplayer" type="text/html" width="640" height="360"
-  src="https://www.youtube.com/embed/cvipc0s8L7U"
-  frameborder="0"></iframe>
+{{< youtube cvipc0s8L7U >}}
 
 ![Main](/images/posts/aws-summit-hackathon-2017/IMG_1683.jpg "Main")
 
