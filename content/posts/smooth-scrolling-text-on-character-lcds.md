@@ -32,9 +32,9 @@ In order to display our canvas on the LCD, we define a function to generate disp
 the canvas. For each frame of the scrolling process, we can simply increment the horizontal index of the location on the canvas by one, which results
 in the message on-screen scrolling left by one pixel. These custom characters are then pushed to the display, and presto—smooth-scrolling text!
 
-There is a slight complication—the memory structure of custom characters differs to that of the font and canvas. The font and canvas use five
+There was a slight complication I glossed over—the memory structure of custom characters differs to that of the font and canvas. The font and canvas use five
 bytes to represent each character, with each byte representing one 7-pixel column (the most significant bit is ignored). The custom character format,
-however, uses 8 bytes—each representing one row of the character (the 8<sup>th</sup> byte is ignored). To solve this issue, we define a function `transpose(byte *dest, byte *src)`
+however, uses 8 bytes—each representing one row of the character (the 8<sup>*th*</sup> byte is ignored). To solve this issue, we define a function `transpose(byte *dest, byte *src)`
 which takes care of mapping the canvas format to the custom character format.
 
 ### Source code
