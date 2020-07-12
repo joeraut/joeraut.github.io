@@ -25,9 +25,9 @@ jobs:
           extended: true
           args: --cleanDestinationDir --verbose
       -
-        name: Create `last-deployed` file
+        name: Create `last-deployed.html` file
         if: success()
-        run: date -u > public/last-deployed
+        run: echo "Last deployed on $(date -u)." > public/last-deployed.html
       -
         name: Deploy to GitHub Pages
         if: success()
