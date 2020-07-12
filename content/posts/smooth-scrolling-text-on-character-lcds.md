@@ -6,11 +6,9 @@ date: 2020-07-12
 
 {{< youtube Or9oK5yfja8 >}}
 
-Character LCDs have been around for a long time—let's try to "teach an old dog new tricks," so to speak! 😉
-
-These displays contain a number of discinct blocks—each capable of displaying a single character—so displaying
+Character LCDs have been around for a long time. These displays contain a number of discinct blocks—each capable of displaying a single character—so displaying
 scrolling text would traditionally involve just shifting characters left one block at a time.
-That's fine and all, but why not take advantage of free time during quarantine to do more than that!
+That's fine and all, but why not take advantage of free time during quarantine to raise the bar.. 😉
 
 ### Hardware
 Most character displays utilise the [Hitachi HD44780 controller chip](https://en.wikipedia.org/wiki/Hitachi_HD44780_LCD_controller),
