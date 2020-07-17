@@ -7,10 +7,3 @@ img {
 .intro-header {
     background-color: #4b56a8;
 }
-
-/* Justify text for medium and larger devices */
-@media (min-width: 992px) {
-    article {
-        text-align: justify;
-    }
-}
