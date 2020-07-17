@@ -15,7 +15,7 @@ Most character displays utilise the [Hitachi HD44780 controller chip](https://en
 which has the neat feature of letting us define and use up to eight custom characters, each 5x8 pixels in size.
 Mine uses this chip, so I'll be taking advantage of repeatedly rendering custom characters to pull off smooth scrolling text.
 
-I connected an Arduino Uno to the character LCD over its 4-bit interface, and got to work on the software side.
+I connected an Arduino Leonardo to the character LCD over its 4-bit interface, and got to work on the software side.
 
 {{< figure src="/images/posts/smooth-scrolling-text-on-character-lcds/arduino-connection.jpg" title="Arduino connected to character LCD" >}}
 
@@ -38,4 +38,4 @@ the canvas format to the custom character format.
 ### Source code
 The Arduino sketch is available here: [SmoothScrollingText.ino](/files/posts/smooth-scrolling-text-on-character-lcds/SmoothScrollingText.ino).
 
-It should run on most Arduino devices, but I have only tested it on an Arduino Uno. Be sure to modify the LCD pin setup for your hardware.
+It should run on most Arduino devices, but I have only tested it on an Arduino Leonardo. Be sure to modify the LCD pin setup for your hardware.
