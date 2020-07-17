@@ -12,7 +12,7 @@ That's fine and all, but why not take advantage of free time during quarantine t
 
 ### Hardware
 Most character displays utilise the [Hitachi HD44780 controller chip](https://en.wikipedia.org/wiki/Hitachi_HD44780_LCD_controller),
-which has the neat feature of letting us define and use up to eight custom characters, each 5x7 pixels in size.
+which has the neat feature of letting us define and use up to eight custom characters, each 5x8 pixels in size.
 Mine uses this chip, so I'll be taking advantage of repeatedly rendering custom characters to pull off smooth scrolling text.
 
 I connected an Arduino Uno to the character LCD over its 4-bit interface, and got to work on the software side.
@@ -32,8 +32,8 @@ in the message on-screen scrolling left by one pixel. These custom characters ar
 
 There was a slight complication I glossed over—the memory structure of custom characters differs to that of the font and canvas. The font and canvas use five
 bytes to represent each character, with each byte representing one 7-pixel column (the most significant bit is ignored). The custom character format,
-however, uses 8 bytes—each representing one row of the character (the 8<sup>*th*</sup> byte is ignored). To solve this issue, we define a function `transpose`
-which takes care of mapping the canvas format to the custom character format.
+however, uses 8 bytes—each representing one row of the character. To solve this issue, we define a function `transpose` which takes care of mapping
+the canvas format to the custom character format.
 
 ### Source code
 The Arduino sketch is available here: [SmoothScrollingText.ino](/files/posts/smooth-scrolling-text-on-character-lcds/SmoothScrollingText.ino).
