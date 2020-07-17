@@ -297,7 +297,7 @@ void transpose(byte *dest, byte *src) {
 // Generate the canvas containing the pixel data from the message we want to display
 byte *generate_canvas(String text) {
   // Allocate memory for the canvas, with each byte representing one column (7 pixels)
-  byte *canvas = calloc(text.length()*SINGLE_CHAR_WIDTH + WHITESPACE_PIXELS*2, sizeof(byte));
+  byte *canvas = (byte*) calloc(text.length()*SINGLE_CHAR_WIDTH + WHITESPACE_PIXELS*2, sizeof(byte));
 
   // Copy each character from the string of text onto the canvas
   for (int i = 0; i < text.length(); i++) {
