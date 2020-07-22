@@ -53,22 +53,22 @@ It has symbols for arrows, some bar graphs, rounded icons and also some Russian 
 
 Here's a pinout of the display from my experimentation, with pins numbered from left to right:
 
-Pin | Function
---- | ---
-1   | Ground
-2   | Contrast – Connect to 5V for full contrast. Connect via a pot to Ground and 5V.
-3   | +5V power supply
-4   | RW
-5   | RS
-6   | Enable
-7   | Data 1
-8   | Data 2
-9   | Data 3
-10  | Data 4
-11  | Data 5
-12  | Data 6
-13  | Data 7
-14  | Data 8
+| Pin | Function |
+| --- | --- |
+| 1   | Ground |
+| 2   | Contrast – Connect to 5V for full contrast. Connect via a pot to Ground and 5V. |
+| 3   | +5V power supply |
+| 4   | RW |
+| 5   | RS |
+| 6   | Enable |
+| 7   | Data 1 |
+| 8   | Data 2 |
+| 9   | Data 3 |
+| 10  | Data 4 |
+| 11  | Data 5 |
+| 12  | Data 6 |
+| 13  | Data 7 |
+| 14  | Data 8 |
 
 ## Conclusion
 
