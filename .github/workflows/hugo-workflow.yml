@@ -42,6 +42,5 @@ jobs:
           mkdir archive
           grep -e loc public/sitemap.xml | sed 's|<loc>\(.*\)<\/loc>$|\1|g' | tr -d ' ' > archive/urls.txt
           echo "Archiving $(cat archive/urls.txt | wc -l | tr -d ' ') pages.."
-          cat archive/urls.txt | xargs -P 8 -I % curl -s -D - 'https://web.archive.org/save/%' -o /dev/null | grep 'location: http' | tee archive/archived-locations.txt
-          cat archive/archived-locations.txt | cut -d ' ' -f 2- > public/last-archived.html
+          cat archive/urls.txt | xargs -P 8 -I % curl -s -D - 'https://web.archive.org/save/%' -o /dev/null | grep 'location: http'
           echo "Done."
