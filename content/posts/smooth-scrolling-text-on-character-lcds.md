@@ -6,9 +6,11 @@ date: 2020-07-12
 
 {{< youtube Or9oK5yfja8 >}}
 
+Update: This got featured on [Hackaday](https://hackaday.com/2020/07/16/smoother-text-scrolling-on-hd44780-lcds/) and [Hackster News](https://www.hackster.io/news/display-smooth-scrolling-text-on-an-hd44780-lcd-009eb805e45a)!
+
 Character LCDs have been around for a long time. These displays contain a number of discinct blocks—each capable of displaying a single character—so displaying
 scrolling text would traditionally involve just shifting characters left one block at a time.
-That's fine and all, but why not take advantage of free time during quarantine to raise the bar.. 😉
+That's fine and all, but why not try and raise the bar.. 😏
 
 ### Hardware
 Most character displays utilise the [Hitachi HD44780 controller chip](https://en.wikipedia.org/wiki/Hitachi_HD44780_LCD_controller),
