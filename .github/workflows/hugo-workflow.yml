@@ -18,7 +18,7 @@ jobs:
         uses: crazy-max/ghaction-hugo@v1
         with:
           #version: latest
-          version: v0.73.0 # latest version as of this commit
+          version: v0.74.3
           extended: true
           args: --cleanDestinationDir --verbose
       -
@@ -35,6 +35,7 @@ jobs:
           fqdn: joeraut.com
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+# Disabled due to Wayback Machine's rate-limiting
 #      -
 #        name: Archive pages to the Wayback Machine
 #        if: success()
