@@ -39,8 +39,6 @@ jobs:
         name: Archive pages to the Wayback Machine
         if: success()
         run: |
-          mkdir archive
-          grep -e loc public/sitemap.xml | sed 's|<loc>\(.*\)<\/loc>$|\1|g' | tr -d ' ' > archive/urls.txt
-          echo "Archiving $(cat archive/urls.txt | wc -l | tr -d ' ') pages.."
-          cat archive/urls.txt | xargs -P 8 -I % curl -s -D - 'https://web.archive.org/save/%' -o /dev/null | grep 'location: http'
+          echo "Archiving all pages.."
+          grep -e loc public/sitemap.xml | sed 's|<loc>\(.*\)<\/loc>$|\1|g' | tr -d ' ' | xargs -P 8 -I % curl -s -D - 'https://web.archive.org/save/%' -o /dev/null | grep 'location: http'
           echo "Done."
