@@ -35,6 +35,9 @@ jobs:
           fqdn: joeraut.com
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      -
+        name: Submit sitemap to Google # Google is unlikely to read the sitemap immediately, so we have some time for deployment and CDN update
+        run: curl "https://www.google.com/ping?sitemap=https://joeraut.com/sitemap.xml" || true
 # Disabled due to Wayback Machine's rate-limiting
 #      -
 #        name: Archive pages to the Wayback Machine
