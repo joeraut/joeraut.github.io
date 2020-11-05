@@ -2,7 +2,7 @@
 title: "Breaking things at Google's init.g Security Workshop"
 description: "A great learning experience at Google London"
 date: 2019-11-05
-image: "/images/posts/init.g/sunset.jpg"
+image: "images/posts/init.g/sunset.jpg"
 ---
 
 Over the past weekend I was fortunate enough to attend init.g, an invite-only
