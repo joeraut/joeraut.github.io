@@ -36,6 +36,18 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       -
+        name: Sync to S3 bucket `joeraut.com`
+        if: success()
+        uses: jakejarvis/s3-sync-action@master
+        with:
+          args: --delete # delete files in the bucket that don't appear in the `public/` directory
+        env:
+          AWS_S3_BUCKET: 'joeraut.com'
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: 'eu-west-2'
+          SOURCE_DIR: 'public'
+      -
         name: Submit sitemap to Google # Google is unlikely to read the sitemap immediately, so we have some time for deployment and CDN update
         run: curl "https://www.google.com/ping?sitemap=https://joeraut.com/sitemap.xml" || true
 # Disabled due to Wayback Machine's rate-limiting
