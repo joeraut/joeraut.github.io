@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Software engineer and occasional blogger; passionate about good code, information security, IoT and machine learning.">
+    <meta name="author" content="Joseph Rautenbach">
+    <meta name="keywords" content="">
+
+    <title>Building a temperature-controlled Peltier Mini Fridge | Joseph Rautenbach</title>
+
+    
+    <link rel="shortcut icon" href="https://joeraut.com/favicon.ico" type="image/x-icon" />
+    <link rel="mask-icon" href="https://joeraut.com/icons/safari-pinned-tab.svg" color="#545271" />
+    <link rel="apple-touch-icon" sizes="180x180" href="https://joeraut.com/icons/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Joseph Rautenbach" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="application-name" content="Joseph Rautenbach" />
+    <meta name="msapplication-starturl" content="" />
+    <meta name="msapplication-TileColor" content="#545271" />
+    <meta name="msapplication-TileImage" content="https://joeraut.com/icons/mstile-150x150.png" />
+    <link rel="manifest" href="https://joeraut.com/manifest.json" />
+
+    
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    
+    <link href="https://joeraut.com/css/clean-blog.min.css" rel="stylesheet"><link rel="stylesheet" type="text/css" href="https://joeraut.com/css/custom.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet'>
+
+    
+    
+    
+
+</head>
+
+<body>
+
+    
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="https://joeraut.com">Joseph Rautenbach</a>
+            </div>
+
+                       
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    
+                    <li>
+                        <a href="https://joeraut.com/about/">About</a>
+                    </li>
+                    
+                    <li>
+                        <a href="https://joeraut.com/posts/">Posts</a>
+                    </li>
+                    
+                    <li>
+                        <a href="https://joeraut.com/contact/">Contact</a>
+                    </li>
+                    
+                  </ul>
+            </div>
+           
+
+        </div>
+        
+    </nav>
+
+
+    
+    
+    <header class="intro-header" style="background-image: url('https://joeraut.com/images/bg.png')">
+    
+      <div class="container">
+        <div class="row">
+           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+             <div class="post-heading">
+               <h1>Building a temperature-controlled Peltier Mini Fridge</h1>
+               <h2 class="subheading">A DIY mini fridge built on a budget</h2>
+               <span class="meta">
+                 3 April 2015
+
+               </span>
+             </div>
+           </div>
+        </div>
+      </div>
+    </header>
+
+    
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                  <p><img src="https://joeraut.com/images/posts/peltier-mini-fridge/main.jpg" alt="Main" title="Main"></p>
+<p><strong>Update:</strong> <a href="https://hackaday.com/2015/04/03/building-your-own-mini-fridge/">Project featured on Hackaday!</a></p>
+<p>I recently finished up on my Peltier Mini fridge project, and it works great!
+It can cool down whatever you want that’ll fit in it – six 330ml cans for example – and can get down to –2.1°C!
+Watch the video for a full description and how it works. I gotta say, it’s really cool, excuse the pun!</p>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/ML7tr-2YvR8" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<p>It is built using a Peltier Thermoelectric cooler module which is a ceramic plate but with many p and n-type semiconductors placed in series inside it. Here’s an image of one:</p>
+<p><img src="https://joeraut.com/images/posts/peltier-mini-fridge/peltier_cooler.png" alt="Peltier TEC" title="Peltier TEC"></p>
+<p>When powered, it acts as a heat pump where one side becomes extremely cold and the other extremely hot. To make use of the cooling a heatsink will need to be put on the hot side to dissipate the heat which is being removed from the “cold” side.
+When this is done, extremely cold temperatures can be reached. When running at 12V and 3.5A, I measured around –15°C on the bare side, although you could go colder with more heat dissipation on the hot side and a more powerful Peltier cooler module.</p>
+<p>With the heatsinks mounted (be sure to use thermal paste!) and a suitable polystyrene enclosure chosen, everything fit together perfectly and worked great.</p>
+<p><img src="https://joeraut.com/images/posts/peltier-mini-fridge/top.jpg" alt="Fridge" title="Fridge"></p>
+<p>To control temperature a temperature controller was purchased from eBay, here is what it looks like installed:</p>
+<p><img src="https://joeraut.com/images/posts/peltier-mini-fridge/temp_controller.png" alt="Controller" title="Controller"></p>
+<p>It is powered by the 12V supply and the relay output switches the Peltier cooler module and fans, and can maintain the temperature quite well. Its thermistor probe is located inside the cool box for reading the temperature as seen here (the cylindrical probe on the left):</p>
+<p><img src="https://joeraut.com/images/posts/peltier-mini-fridge/inside.jpg" alt="Inside" title="Inside"></p>
+<p>I powered it using a modified ATX power supply from an old computer, for the 12V output. The fridge draws around 3.5A when the Peltier module is on.</p>
+<h2 id="resources-used">Resources used</h2>
+<ul>
+<li>Peltier cooler module: <a href="http://www.ebay.com/sch/i.html?_nkw=peltier+cooler">eBay</a></li>
+<li>Temperature controller: <a href="http://www.ebay.com/sch/i.html?_nkw=temperature+controller+12V">eBay</a></li>
+<li>Heatsinks – salvaged from old computers and electronics, otherwise at computer stores</li>
+<li>Aluminium spacing blocks – salvaged from an old, broken Peltier-based camping fridge</li>
+<li>Power supply – see below</li>
+</ul>
+<p>I would recommend a 12V power supply capable of supplying 5A of current, as it’s generally a bad idea to operate power supplies at near full capacity for long periods of time, so 5A is a good figure, these shouldn’t be too hard to find; I actually used a PC ATX Power Supply that I modified to give 12V output, found in any desktop computer or at computer stores. <a href="http://www.wikihow.com/Convert-a-Computer-ATX-Power-Supply-to-a-Lab-Power-Supply">Instructions to modify</a>. These can supply &gt;10A – more than enough power for this project – in fact, one <em>could</em> actually run two or three Peltier coolers.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>This project worked out great, although many Peltier fridge projects fail as they don’t end up reaching the desired temperature. A common problem is not having proper insulation or the enclosure being too big for the size of Peltier module they are using – don’t oversize your container.</p>
+<p>Unfortunately this system is nowhere near as efficient as a standard refrigeration system with a compressor, etc., however it&rsquo;s very cheap and easy to build, as well as near silent.</p>
+<p>For me it gets the job done and it’s worked well on a camping trip already! A huge success.</p>
+
+                  
+   <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "devjoe" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <hr>
+    
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                  <ul class="list-inline text-center">
+                    
+                    
+                    
+                    <li>
+                      <a href="https://www.linkedin.com/in/joeraut/">
+                        <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                        </span>
+                      </a>
+                    </li>
+                    
+                    <li>
+                      <a href="https://github.com/joeraut">
+                        <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                        </span>
+                      </a>
+                    </li>
+                    
+                    <li>
+                      <a href="https://joeraut.com/contact/">
+                        <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                        </span>
+                      </a>
+                    </li>
+                    
+                    <li>
+                      <a href="https://twitter.com/joeraut">
+                        <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                        </span>
+                      </a>
+                    </li>
+                    
+                    
+                  </ul>
+                  <p class="copyright text-muted"><a href="https://github.com/joeraut/joeraut.github.io">Source code</a> · Powered by <a href="https://gohugo.io/">Hugo</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    
+    <script src="https://joeraut.com/js/jquery.min.js"></script>
+
+    
+    <script src="https://joeraut.com/js/bootstrap.min.js"></script>
+
+    
+    <script src="https://joeraut.com/js/clean-blog.js"></script>
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-132837754-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+</body>
+
+</html>
+

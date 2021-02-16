@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Software engineer and occasional blogger; passionate about good code, information security, IoT and machine learning.">
+    <meta name="author" content="Joseph Rautenbach">
+    <meta name="keywords" content="">
+
+    <title>Converting LaTeX equations to images online with Docker and Node.js | Joseph Rautenbach</title>
+
+    
+    <link rel="shortcut icon" href="https://joeraut.com/favicon.ico" type="image/x-icon" />
+    <link rel="mask-icon" href="https://joeraut.com/icons/safari-pinned-tab.svg" color="#545271" />
+    <link rel="apple-touch-icon" sizes="180x180" href="https://joeraut.com/icons/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Joseph Rautenbach" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="application-name" content="Joseph Rautenbach" />
+    <meta name="msapplication-starturl" content="" />
+    <meta name="msapplication-TileColor" content="#545271" />
+    <meta name="msapplication-TileImage" content="https://joeraut.com/icons/mstile-150x150.png" />
+    <link rel="manifest" href="https://joeraut.com/manifest.json" />
+
+    
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    
+    <link href="https://joeraut.com/css/clean-blog.min.css" rel="stylesheet"><link rel="stylesheet" type="text/css" href="https://joeraut.com/css/custom.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet'>
+
+    
+    
+    
+
+</head>
+
+<body>
+
+    
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="https://joeraut.com">Joseph Rautenbach</a>
+            </div>
+
+                       
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    
+                    <li>
+                        <a href="https://joeraut.com/about/">About</a>
+                    </li>
+                    
+                    <li>
+                        <a href="https://joeraut.com/posts/">Posts</a>
+                    </li>
+                    
+                    <li>
+                        <a href="https://joeraut.com/contact/">Contact</a>
+                    </li>
+                    
+                  </ul>
+            </div>
+           
+
+        </div>
+        
+    </nav>
+
+
+    
+    
+    <header class="intro-header" style="background-image: url('https://joeraut.com/images/bg.png')">
+    
+      <div class="container">
+        <div class="row">
+           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+             <div class="post-heading">
+               <h1>Converting LaTeX equations to images online with Docker and Node.js</h1>
+               <h2 class="subheading">Designing a web app with security in mind</h2>
+               <span class="meta">
+                 21 January 2019
+
+               </span>
+             </div>
+           </div>
+        </div>
+      </div>
+    </header>
+
+    
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                  <p>As a LaTeX user that occasionally needs to use Microsoft Word, I often convert LaTeX math equations to images to include them in the documents. Let&rsquo;s build something to make it easy!</p>
+<p>I came up with Node.js web app that allows LaTeX math equations to be entered and converted to PNG/JPG/SVG images.</p>
+<p><img src="https://joeraut.com/images/posts/latex-to-image-web/main.png" alt="Homepage" title="Main"></p>
+<p>For each conversion, Node.js starts an isolated Docker container with a LaTeX installation; it compiles the generated <code>.tex</code> file and converts it to an SVG vector image. If required, the SVG file is then converted to a raster image format for PNG/JPG.</p>
+<p>Bootstrap and jQuery are used in the web interface, with AJAX calls made to the conversion API endpoint.</p>
+<p>It made sense to use Docker as, well, <strong>LaTeX is powerful</strong>. Reading and writing external files and executing terminal commands are possible, and easy to exploit.</p>
+<p>The isolated Docker container started for each conversion is only able to access the local <code>temp/&lt;id&gt;/</code> directory and has no network access.
+Additionally, the compilation process will be killed after 5 seconds if not complete; this is to safeguard against infinite loops and other troublesome LaTeX quirks.</p>
+<h3 id="use-it">Use it</h3>
+<p>The app is up and running at <a href="https://latex2image.joeraut.com/">latex2image.joeraut.com</a>.</p>
+<h3 id="source-code">Source code</h3>
+<p>The <a href="https://github.com/joeraut/latex2image-web">source code is available on GitHub</a>.</p>
+<p><img src="https://joeraut.com/images/posts/latex-to-image-web/equation.svg" alt="Equation" title="Equation"></p>
+
+                  
+   <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "devjoe" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <hr>
+    
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                  <ul class="list-inline text-center">
+                    
+                    
+                    
+                    <li>
+                      <a href="https://www.linkedin.com/in/joeraut/">
+                        <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                        </span>
+                      </a>
+                    </li>
+                    
+                    <li>
+                      <a href="https://github.com/joeraut">
+                        <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                        </span>
+                      </a>
+                    </li>
+                    
+                    <li>
+                      <a href="https://joeraut.com/contact/">
+                        <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                        </span>
+                      </a>
+                    </li>
+                    
+                    <li>
+                      <a href="https://twitter.com/joeraut">
+                        <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                        </span>
+                      </a>
+                    </li>
+                    
+                    
+                  </ul>
+                  <p class="copyright text-muted"><a href="https://github.com/joeraut/joeraut.github.io">Source code</a> · Powered by <a href="https://gohugo.io/">Hugo</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    
+    <script src="https://joeraut.com/js/jquery.min.js"></script>
+
+    
+    <script src="https://joeraut.com/js/bootstrap.min.js"></script>
+
+    
+    <script src="https://joeraut.com/js/clean-blog.js"></script>
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-132837754-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+</body>
+
+</html>
+

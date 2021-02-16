@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Software engineer and occasional blogger; passionate about good code, information security, IoT and machine learning.">
+    <meta name="author" content="Joseph Rautenbach">
+    <meta name="keywords" content="">
+
+    <title>Displaying smooth-scrolling text on old character LCDs | Joseph Rautenbach</title>
+
+    
+    <link rel="shortcut icon" href="https://joeraut.com/favicon.ico" type="image/x-icon" />
+    <link rel="mask-icon" href="https://joeraut.com/icons/safari-pinned-tab.svg" color="#545271" />
+    <link rel="apple-touch-icon" sizes="180x180" href="https://joeraut.com/icons/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Joseph Rautenbach" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="application-name" content="Joseph Rautenbach" />
+    <meta name="msapplication-starturl" content="" />
+    <meta name="msapplication-TileColor" content="#545271" />
+    <meta name="msapplication-TileImage" content="https://joeraut.com/icons/mstile-150x150.png" />
+    <link rel="manifest" href="https://joeraut.com/manifest.json" />
+
+    
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    
+    <link href="https://joeraut.com/css/clean-blog.min.css" rel="stylesheet"><link rel="stylesheet" type="text/css" href="https://joeraut.com/css/custom.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet'>
+
+    
+    
+    
+
+</head>
+
+<body>
+
+    
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="https://joeraut.com">Joseph Rautenbach</a>
+            </div>
+
+                       
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    
+                    <li>
+                        <a href="https://joeraut.com/about/">About</a>
+                    </li>
+                    
+                    <li>
+                        <a href="https://joeraut.com/posts/">Posts</a>
+                    </li>
+                    
+                    <li>
+                        <a href="https://joeraut.com/contact/">Contact</a>
+                    </li>
+                    
+                  </ul>
+            </div>
+           
+
+        </div>
+        
+    </nav>
+
+
+    
+    
+    <header class="intro-header" style="background-image: url('https://joeraut.com/images/bg.png')">
+    
+      <div class="container">
+        <div class="row">
+           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+             <div class="post-heading">
+               <h1>Displaying smooth-scrolling text on old character LCDs</h1>
+               <h2 class="subheading">The bleeding edge of ‘80s displays?</h2>
+               <span class="meta">
+                 12 July 2020
+
+               </span>
+             </div>
+           </div>
+        </div>
+      </div>
+    </header>
+
+    
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                  
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/Or9oK5yfja8" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<p><em>Update (17 July 2020): This got featured on <a href="https://hackaday.com/2020/07/16/smoother-text-scrolling-on-hd44780-lcds/">Hackaday</a> and <a href="https://www.hackster.io/news/display-smooth-scrolling-text-on-an-hd44780-lcd-009eb805e45a">Hackster News</a>!</em></p>
+<p>Character LCDs have been around for a long time. These displays contain a number of discinct blocks—each capable of displaying a single character—so displaying
+scrolling text would traditionally involve just shifting characters left one block at a time.
+That&rsquo;s fine and all, but why not try and raise the bar.. 😏</p>
+<h3 id="hardware">Hardware</h3>
+<p>Most character displays utilise the <a href="https://en.wikipedia.org/wiki/Hitachi_HD44780_LCD_controller">Hitachi HD44780 controller chip</a>,
+which has the neat feature of letting us define and use up to eight custom characters, each 5x8 pixels in size.
+Mine uses this chip, so I&rsquo;ll be taking advantage of repeatedly rendering custom characters to pull off smooth scrolling text.</p>
+<p>I connected an Arduino Leonardo to my <a href="https://joeraut.com/posts/interfacing-salvaged-lcd-display/">salvaged display</a> over its 4-bit interface, and got to work on the software side.</p>
+<figure>
+    <img src="https://joeraut.com/images/posts/smooth-scrolling-text-on-character-lcds/arduino-connection.jpg"/> <figcaption>
+            <h4>Arduino connected to character LCD</h4>
+        </figcaption>
+</figure>
+
+<h3 id="software">Software</h3>
+<p>As we use an Arduino, the software written is in C++. Source code available at the end of the article.</p>
+<p>We allocate memory for a canvas that will contain the raw pixel data for the message we want to display. We make use of a
+<a href="https://github.com/Ameba8195/Arduino/blob/master/hardware_v2/cores/arduino/font5x7.h">5x7-pixel ASCII font</a>, and for each ASCII character
+in the message string, we place the corresponding character at the appropriate location on the canvas using the <code>memcpy</code> function.</p>
+<p>In order to display our canvas on the LCD, we define a function to generate display-ready custom characters by grabbing pixel data from appropriate locations on
+the canvas. For each frame of the scrolling process, we can simply increment the horizontal index of the location on the canvas by one, which results
+in the message on-screen scrolling left by one pixel. These custom characters are then pushed to the display, and presto—smooth-scrolling text!</p>
+<p>There was a slight complication I glossed over—the memory structure of custom characters differs to that of the font and canvas. The font and canvas use five
+bytes to represent each character, with each byte representing one 7-pixel column (the most significant bit is ignored). The custom character format,
+however, uses 8 bytes—each representing one row of the character. To solve this issue, we define a function <code>transpose</code> which takes care of mapping
+the canvas format to the custom character format.</p>
+<h3 id="source-code">Source code</h3>
+<p>The Arduino sketch is available here: <a href="https://joeraut.com/files/posts/smooth-scrolling-text-on-character-lcds/SmoothScrollingText.ino">SmoothScrollingText.ino</a>.</p>
+<p>It should run on most Arduino devices, but I have only tested it on an Arduino Leonardo. Be sure to modify the LCD pin setup for your hardware.</p>
+
+                  
+   <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "devjoe" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <hr>
+    
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                  <ul class="list-inline text-center">
+                    
+                    
+                    
+                    <li>
+                      <a href="https://www.linkedin.com/in/joeraut/">
+                        <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                        </span>
+                      </a>
+                    </li>
+                    
+                    <li>
+                      <a href="https://github.com/joeraut">
+                        <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                        </span>
+                      </a>
+                    </li>
+                    
+                    <li>
+                      <a href="https://joeraut.com/contact/">
+                        <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                        </span>
+                      </a>
+                    </li>
+                    
+                    <li>
+                      <a href="https://twitter.com/joeraut">
+                        <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                        </span>
+                      </a>
+                    </li>
+                    
+                    
+                  </ul>
+                  <p class="copyright text-muted"><a href="https://github.com/joeraut/joeraut.github.io">Source code</a> · Powered by <a href="https://gohugo.io/">Hugo</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    
+    <script src="https://joeraut.com/js/jquery.min.js"></script>
+
+    
+    <script src="https://joeraut.com/js/bootstrap.min.js"></script>
+
+    
+    <script src="https://joeraut.com/js/clean-blog.js"></script>
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-132837754-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+</body>
+
+</html>
+

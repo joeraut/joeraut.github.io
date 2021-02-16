@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Software engineer and occasional blogger; passionate about good code, information security, IoT and machine learning.">
+    <meta name="author" content="Joseph Rautenbach">
+    <meta name="keywords" content="">
+
+    <title>Cree LED Flashlight mod – Disabling different modes (Sipik SK68 Clone) | Joseph Rautenbach</title>
+
+    
+    <link rel="shortcut icon" href="https://joeraut.com/favicon.ico" type="image/x-icon" />
+    <link rel="mask-icon" href="https://joeraut.com/icons/safari-pinned-tab.svg" color="#545271" />
+    <link rel="apple-touch-icon" sizes="180x180" href="https://joeraut.com/icons/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Joseph Rautenbach" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="application-name" content="Joseph Rautenbach" />
+    <meta name="msapplication-starturl" content="" />
+    <meta name="msapplication-TileColor" content="#545271" />
+    <meta name="msapplication-TileImage" content="https://joeraut.com/icons/mstile-150x150.png" />
+    <link rel="manifest" href="https://joeraut.com/manifest.json" />
+
+    
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    
+    <link href="https://joeraut.com/css/clean-blog.min.css" rel="stylesheet"><link rel="stylesheet" type="text/css" href="https://joeraut.com/css/custom.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet'>
+
+    
+    
+    
+
+</head>
+
+<body>
+
+    
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="https://joeraut.com">Joseph Rautenbach</a>
+            </div>
+
+                       
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    
+                    <li>
+                        <a href="https://joeraut.com/about/">About</a>
+                    </li>
+                    
+                    <li>
+                        <a href="https://joeraut.com/posts/">Posts</a>
+                    </li>
+                    
+                    <li>
+                        <a href="https://joeraut.com/contact/">Contact</a>
+                    </li>
+                    
+                  </ul>
+            </div>
+           
+
+        </div>
+        
+    </nav>
+
+
+    
+    
+    <header class="intro-header" style="background-image: url('https://joeraut.com/images/bg.png')">
+    
+      <div class="container">
+        <div class="row">
+           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+             <div class="post-heading">
+               <h1>Cree LED Flashlight mod – Disabling different modes (Sipik SK68 Clone)</h1>
+               <h2 class="subheading">Modifying Cree flashlights for full brightness mode only</h2>
+               <span class="meta">
+                 20 September 2014
+
+               </span>
+             </div>
+           </div>
+        </div>
+      </div>
+    </header>
+
+    
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                  <p><img src="https://joeraut.com/images/posts/cree-flashlight-mode-mod/IMG_26651.jpg" alt="Final" title="Final"></p>
+<p>Around a month ago I purchased a Sipik SK68 LED flashlight clone on eBay, for a grand total of $4.04! Shipping took around three weeks which isn’t bad considering it was free, but when I started using it there was a rather annoying design flaw..</p>
+<h2 id="the-flashlight">The Flashlight</h2>
+<p>It is focusable and runs on one AA 1.5V battery, or one 14500 3.7V lithium battery. The brightness with a 14500 battery is around 300 lumens which is seriously bright. It’s a great deal for the price!</p>
+<p><img src="https://joeraut.com/images/posts/cree-flashlight-mode-mod/IMG_2645.jpg" alt="Flashlight" title="Flashlight"></p>
+<h1 id="the-issue">The Issue</h1>
+<p>This flashlight has one very poorly engineered feature: its modes.
+It has three modes, <em>Bright</em>, <em>Dim</em> and <em>Strobe</em>, but to switch modes the light has to be turned off and back on again. This is a huge inconvenience when you switch it off in the Bright mode, as on the next power cycle it will be in Dim mode. You have to cycle modes to get it back to normal again.
+This frustrated me, and I had no need for the other modes anyway, only full brightness. Time for a fix!</p>
+<h2 id="disassembly">Disassembly</h2>
+<p>I started by unscrewing the lens cap, revealing the Cree LED emitter and lens.</p>
+<p><img src="https://joeraut.com/images/posts/cree-flashlight-mode-mod/IMG_2654.jpg" alt="Disassembly" title="Disassembly"></p>
+<p>Next, the LED “pill” needs to be removed – this holds the driver and LED emitter.
+The focusing ring can rotate freely, but the LED pill (the silver aluminium part) is tight. Unscrew it by holding it to the focusing ring with pliers, and unscrew them both. The pill will unscrew, then just pull the pill out.</p>
+<p><img src="https://joeraut.com/images/posts/cree-flashlight-mode-mod/IMG_2657.jpg" alt="Disassembly" title="Disassembly"></p>
+<p><img src="https://joeraut.com/images/posts/cree-flashlight-mode-mod/IMG_26591.jpg" alt="Disassembly" title="Disassembly"></p>
+<p>At the bottom of the pill there was a circuit board with markings <code>JX2205</code>. I couldn’t find any valuable info about it online. Simply pop the circuit board out with a screwdriver.</p>
+<p><img src="https://joeraut.com/images/posts/cree-flashlight-mode-mod/IMG_26631.jpg" alt="Disassembly" title="Disassembly"></p>
+<p>The circuit board contains a <em>boost converter</em> – this boosts the voltage from, say, a 1.5V battery to the higher voltage needed by the LED. It also provides a constant current, which is required for all high-power LEDs.</p>
+<h2 id="the-fix">The Fix</h2>
+<p><img src="https://joeraut.com/images/posts/cree-flashlight-mode-mod/IMG_2679.jpg" alt="Disassembly" title="Disassembly"></p>
+<p>After visually inspecting the board, I spotted two ICs (chips) which could have been the culprits.</p>
+<p>One was a six legged IC labelled <code>601</code>, which turned out to be the boost converted driver chip. Nothing to see here.
+The other one which I assumed was a transistor turned out to be our culprit. It had only 3 legs and was labelled <code>8133A</code>. After some Googling I found <a href="http://detail.1688.com/offer/1207165037.html">a schematic</a> for it labelled <em>&ldquo;5W three function LED driver IC&rdquo;</em>:</p>
+<p><img src="https://joeraut.com/images/posts/cree-flashlight-mode-mod/schematic.png" alt="Schematic" title="Schematic"></p>
+<p>The schematic shows that it includes a transistor between pin 1 (LX) and 3 (Ground) which switches the LED on and off. All we need to do to bypass it is to connect pins 1 and 3 together.</p>
+<p>After checking the board, the whole outer ring acts as a Ground conductor, so we can simply solder on a jumper between pin 1 on the chip to the outer ground, as shown below by the arrow:</p>
+<p><img src="https://joeraut.com/images/posts/cree-flashlight-mode-mod/IMG_2679-arrow.jpg" alt="Disassembly" title="Disassembly"></p>
+<p>After a quick, messy soldering job, the jumper was in place:</p>
+<p><img src="https://joeraut.com/images/posts/cree-flashlight-mode-mod/IMG_2681.jpg" alt="Disassembly" title="Disassembly"></p>
+<p><img src="https://joeraut.com/images/posts/cree-flashlight-mode-mod/IMG_2683.jpg" alt="Disassembly" title="Disassembly"></p>
+<p>Now all that needs to be done is to reassemble the housing, and you’ll hopefully be holding a sweet 1-mode flashlight!
+The driver in many Sipik SK68 flashlights and clones may vary from different batches / manufacturers, however if your driver uses this chip then the process should be the same. If not, just search the part numbers of the ICs until you find the culprit.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>This project was a great success and makes this flashlight an even better buy in my opinion. Please let me know if you try this!</p>
+<p><strong>Disclaimer</strong>: If you attempt this, it&rsquo;s at your own risk. If you break your flashlight I will not be held responsible. This will obviously void any warranty, so be careful and good luck!</p>
+
+                  
+   <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "devjoe" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <hr>
+    
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                  <ul class="list-inline text-center">
+                    
+                    
+                    
+                    <li>
+                      <a href="https://www.linkedin.com/in/joeraut/">
+                        <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                        </span>
+                      </a>
+                    </li>
+                    
+                    <li>
+                      <a href="https://github.com/joeraut">
+                        <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                        </span>
+                      </a>
+                    </li>
+                    
+                    <li>
+                      <a href="https://joeraut.com/contact/">
+                        <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                        </span>
+                      </a>
+                    </li>
+                    
+                    <li>
+                      <a href="https://twitter.com/joeraut">
+                        <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                        </span>
+                      </a>
+                    </li>
+                    
+                    
+                  </ul>
+                  <p class="copyright text-muted"><a href="https://github.com/joeraut/joeraut.github.io">Source code</a> · Powered by <a href="https://gohugo.io/">Hugo</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    
+    <script src="https://joeraut.com/js/jquery.min.js"></script>
+
+    
+    <script src="https://joeraut.com/js/bootstrap.min.js"></script>
+
+    
+    <script src="https://joeraut.com/js/clean-blog.js"></script>
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-132837754-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+</body>
+
+</html>
+

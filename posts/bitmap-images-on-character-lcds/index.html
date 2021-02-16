@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Software engineer and occasional blogger; passionate about good code, information security, IoT and machine learning.">
+    <meta name="author" content="Joseph Rautenbach">
+    <meta name="keywords" content="">
+
+    <title>Bitmap images on character LCDs | Joseph Rautenbach</title>
+
+    
+    <link rel="shortcut icon" href="https://joeraut.com/favicon.ico" type="image/x-icon" />
+    <link rel="mask-icon" href="https://joeraut.com/icons/safari-pinned-tab.svg" color="#545271" />
+    <link rel="apple-touch-icon" sizes="180x180" href="https://joeraut.com/icons/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Joseph Rautenbach" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="application-name" content="Joseph Rautenbach" />
+    <meta name="msapplication-starturl" content="" />
+    <meta name="msapplication-TileColor" content="#545271" />
+    <meta name="msapplication-TileImage" content="https://joeraut.com/icons/mstile-150x150.png" />
+    <link rel="manifest" href="https://joeraut.com/manifest.json" />
+
+    
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    
+    <link href="https://joeraut.com/css/clean-blog.min.css" rel="stylesheet"><link rel="stylesheet" type="text/css" href="https://joeraut.com/css/custom.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet'>
+
+    
+    
+    
+
+</head>
+
+<body>
+
+    
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="https://joeraut.com">Joseph Rautenbach</a>
+            </div>
+
+                       
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    
+                    <li>
+                        <a href="https://joeraut.com/about/">About</a>
+                    </li>
+                    
+                    <li>
+                        <a href="https://joeraut.com/posts/">Posts</a>
+                    </li>
+                    
+                    <li>
+                        <a href="https://joeraut.com/contact/">Contact</a>
+                    </li>
+                    
+                  </ul>
+            </div>
+           
+
+        </div>
+        
+    </nav>
+
+
+    
+    
+    <header class="intro-header" style="background-image: url('https://joeraut.com/images/bg.png')">
+    
+      <div class="container">
+        <div class="row">
+           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+             <div class="post-heading">
+               <h1>Bitmap images on character LCDs</h1>
+               <h2 class="subheading">Displaying bitmaps on HD44780-based displays</h2>
+               <span class="meta">
+                 27 October 2013
+
+               </span>
+             </div>
+           </div>
+        </div>
+      </div>
+    </header>
+
+    
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                  <p><img src="https://joeraut.com/images/posts/bitmap-images-on-character-lcds/IMG_1062.JPG" alt="Final" title="Final"></p>
+<p>Character LCDs are displays that consist of many character “blocks”, and each block can display a letter, number, etc.
+A display controller in widespread use is the Hitachi HD44780 driver. I have talked about this in a previous post on reverse engineering a printer LCD.</p>
+<p>HD44780-based character LCDs usually come in common sizes such as 16×2 (16 characters per line, two lines), 8×2, 20×2 20×4, using the 8-bit ASCII character set.
+Interestingly enough, the HD44780 chip allows up to 8 custom characters to be defined. These can contain any bitmap data, and can be updated as often as you like.</p>
+<p>With this in mind, we can construct basic bitmap images for the display, with a resolution of 20×16 pixels if we have four custom characters per line, occupying two lines, 15×16 if we have three per line on two lines (two are still available but not used) or a 40×8 display if we put all eight on one line.
+However, there is a gap between each character so images will have gaps, and symmetry can get messed up if you don’t design it correctly.</p>
+<p>I connected a standard 16×2 character LCD to my Arduino via a Proto Shield (excuse the messy wiring) and hacked together some code for the custom characters.
+I have created a very low-resolution version of the Hack a Day logo for their Trinket competition. The goal is to put their logo in interesting places. Nobody has done this before, so I figured it would be fun to try out.</p>
+<p>Here’s the original image for a comparison:</p>
+<p><img src="https://joeraut.com/images/posts/bitmap-images-on-character-lcds/hackaday_logo.jpg" alt="Hack a Day logo" title="Hack a Day logo"></p>
+<p>My final logo ended up using six of the custom characters for a 15×16 pixel resolution (3×2 resolution in characters) as there are things in the centre which are split in the character gaps so four characters per line can’t work. I finally had to do it this way after too much trial and error using all 8 characters for a 20×16 resolution.</p>
+<p><img src="https://joeraut.com/images/posts/bitmap-images-on-character-lcds/IMG_1057.JPG" alt="Final" title="Final"></p>
+<h2 id="downloads">Downloads</h2>
+<p>The Arduino sketch to draw the logo is available <a href="https://joeraut.com/files/posts/bitmap-images-on-character-lcds/lcd_hackaday.ino">here</a>.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>I think the result turned out quite nicely considering the limitations of the display.</p>
+
+                  
+   <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "devjoe" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <hr>
+    
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                  <ul class="list-inline text-center">
+                    
+                    
+                    
+                    <li>
+                      <a href="https://www.linkedin.com/in/joeraut/">
+                        <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                        </span>
+                      </a>
+                    </li>
+                    
+                    <li>
+                      <a href="https://github.com/joeraut">
+                        <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                        </span>
+                      </a>
+                    </li>
+                    
+                    <li>
+                      <a href="https://joeraut.com/contact/">
+                        <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                        </span>
+                      </a>
+                    </li>
+                    
+                    <li>
+                      <a href="https://twitter.com/joeraut">
+                        <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                        </span>
+                      </a>
+                    </li>
+                    
+                    
+                  </ul>
+                  <p class="copyright text-muted"><a href="https://github.com/joeraut/joeraut.github.io">Source code</a> · Powered by <a href="https://gohugo.io/">Hugo</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    
+    <script src="https://joeraut.com/js/jquery.min.js"></script>
+
+    
+    <script src="https://joeraut.com/js/bootstrap.min.js"></script>
+
+    
+    <script src="https://joeraut.com/js/clean-blog.js"></script>
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-132837754-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+</body>
+
+</html>
+

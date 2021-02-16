@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Software engineer and occasional blogger; passionate about good code, information security, IoT and machine learning.">
+    <meta name="author" content="Joseph Rautenbach">
+    <meta name="keywords" content="">
+
+    <title>Interfacing with a salvaged LCD character display | Joseph Rautenbach</title>
+
+    
+    <link rel="shortcut icon" href="https://joeraut.com/favicon.ico" type="image/x-icon" />
+    <link rel="mask-icon" href="https://joeraut.com/icons/safari-pinned-tab.svg" color="#545271" />
+    <link rel="apple-touch-icon" sizes="180x180" href="https://joeraut.com/icons/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Joseph Rautenbach" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="application-name" content="Joseph Rautenbach" />
+    <meta name="msapplication-starturl" content="" />
+    <meta name="msapplication-TileColor" content="#545271" />
+    <meta name="msapplication-TileImage" content="https://joeraut.com/icons/mstile-150x150.png" />
+    <link rel="manifest" href="https://joeraut.com/manifest.json" />
+
+    
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    
+    <link href="https://joeraut.com/css/clean-blog.min.css" rel="stylesheet"><link rel="stylesheet" type="text/css" href="https://joeraut.com/css/custom.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet'>
+
+    
+    
+    
+
+</head>
+
+<body>
+
+    
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="https://joeraut.com">Joseph Rautenbach</a>
+            </div>
+
+                       
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    
+                    <li>
+                        <a href="https://joeraut.com/about/">About</a>
+                    </li>
+                    
+                    <li>
+                        <a href="https://joeraut.com/posts/">Posts</a>
+                    </li>
+                    
+                    <li>
+                        <a href="https://joeraut.com/contact/">Contact</a>
+                    </li>
+                    
+                  </ul>
+            </div>
+           
+
+        </div>
+        
+    </nav>
+
+
+    
+    
+    <header class="intro-header" style="background-image: url('https://joeraut.com/images/bg.png')">
+    
+      <div class="container">
+        <div class="row">
+           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+             <div class="post-heading">
+               <h1>Interfacing with a salvaged LCD character display</h1>
+               <h2 class="subheading">Reverse-engineering an old printer LCD</h2>
+               <span class="meta">
+                 27 May 2013
+
+               </span>
+             </div>
+           </div>
+        </div>
+      </div>
+    </header>
+
+    
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                  <p><img src="https://joeraut.com/images/posts/interfacing-salvaged-lcd-display/IMG_07481.jpg" alt="Final" title="Final"></p>
+<p>A few weekends ago I got hold of an old broken Canon printer/scanner combo. It featured a pretty neat looking 20x2 character LCD display. Let&rsquo;s get it working!</p>
+<h2 id="reverse-engineering">Reverse engineering</h2>
+<p>When removing the display, I noticed something very interesting in that the display was just a glass panel and had a ribbon cable attached to it that had only 14 pins. This meant that there was something special with this display in that the display circuitry for driving the display was all built inside the glass – known as a <em>Chip on Glass</em> display. Normally you find these LCD displays with 60 connections or more, as the multiplexing and driving circuitry is not attached to the glass.</p>
+<p>Now here’s why I actually decided to try to actually get this display working in the first place. When I realised there was no circuit board behind the LCD panel as you would normally find with a few driver chips and/or recognisable components, I thought it would be using a proprietary command set for interfacing with an SPI or I2C bus, and would be impossible to sniff and decode the data as the printer was broken and did not power on.
+As I counted the pins on the ribbon cable I realised that it had 14 pins. This is a very coincidental number as standard HD44780-based character LCD displays use this exact number of pins (plus two for the backlight so it’s 16, but here there isn’t one).</p>
+<h2 id="wiring-it-up">Wiring it up</h2>
+<p><img src="https://joeraut.com/images/posts/interfacing-salvaged-lcd-display/pinout_table.jpg" alt="Pinout table" title="Pinout table"></p>
+<p>Looking at the pinout for normal HD44780-based LCDs, the first three pins are responsible for power and the contrast adjustment. I decided to try to wire up these three pins and see what happens. I connected pin 1 to Ground, pin 2 to +5V and pin 3 as the contrast adjustment through a potentiometer from Ground to 5V.</p>
+<p>As expected, the first line went solid black which HD44780 LCDs do before you send them data, which proved my theory. I then spent far too much time in actually getting it to work.
+Here are my initial connections to the printer circuit board that has the ribbon cable connector for the display:</p>
+<p><img src="https://joeraut.com/images/posts/interfacing-salvaged-lcd-display/IMG_0743.jpg" alt="Breadboard" title="Breadboard">
+<img src="https://joeraut.com/images/posts/interfacing-salvaged-lcd-display/IMG_07451.jpg" alt="Breadboard" title="Breadboard"></p>
+<p>I tried connecting up the LCD in 4-bit mode using the LiquidCrystal Arduino library, but only random characters and symbols were displayed on the LCD.</p>
+<p><img src="https://joeraut.com/images/posts/interfacing-salvaged-lcd-display/IMG_0768.jpg" alt="Junk data" title="Junk data"></p>
+<p>I knew this meant there was something wrong with the wiring or something else weird, so I tried connecting it up in 8-bit mode and to no avail. I randomly tried swapping pins around until finally when RS and RW were swapped (pin 4 and 5), it came to life!</p>
+<p><img src="https://joeraut.com/images/posts/interfacing-salvaged-lcd-display/IMG_0772.jpg" alt="Valid text" title="Valid text"></p>
+<p>I was <em>quite</em> happy in knowing this darn thing actually works!
+I built up a small breakout board so it could easily fit on a breadboard. I cut off a section from the printer PCB with the ribbon cable connecter, glued it to the breakout board and soldered connections from it, then put on a small potentiometer for the contrast adjustment.
+Here are some pictures of how it turned out:</p>
+<p><img src="https://joeraut.com/images/posts/interfacing-salvaged-lcd-display/IMG_07581.jpg" alt="Final" title="Final"></p>
+<p><img src="https://joeraut.com/images/posts/interfacing-salvaged-lcd-display/IMG_0760.jpg" alt="Final" title="Final"></p>
+<p>I then decided to do a “mini-project” just to do something semi-useful: a temperature display.
+A quick program was conjured up to read the temperature from a LM35 temperature sensor and display the value to the display (in Celsius). This is what&rsquo;s shown at the top of this post.</p>
+<p>One more thing that I thought would be interesting is seeing the ASCII character set that the LCD uses. I figured since this display was probably designed for printers or similar consumer devices, it would have some interesting characters built in, and it did!</p>
+<p>It has symbols for arrows, some bar graphs, rounded icons and also some Russian (I think?) chracters.</p>
+<p>Here&rsquo;s a pinout of the display from my experimentation, with pins numbered from left to right:</p>
+<table>
+<thead>
+<tr>
+<th>Pin</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Ground</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Contrast – Connect to 5V for full contrast. Connect via a pot to Ground and 5V.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>+5V power supply</td>
+</tr>
+<tr>
+<td>4</td>
+<td>RW</td>
+</tr>
+<tr>
+<td>5</td>
+<td>RS</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Enable</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Data 1</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Data 2</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Data 3</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Data 4</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Data 5</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Data 6</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Data 7</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Data 8</td>
+</tr>
+</tbody>
+</table>
+<h2 id="conclusion">Conclusion</h2>
+<p>Overall it was a good learning experience in getting it working, and I really enjoyed it.</p>
+<p>Now, I really need to think of a proper project to use this in&hellip;</p>
+
+                  
+   <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "devjoe" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <hr>
+    
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                  <ul class="list-inline text-center">
+                    
+                    
+                    
+                    <li>
+                      <a href="https://www.linkedin.com/in/joeraut/">
+                        <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                        </span>
+                      </a>
+                    </li>
+                    
+                    <li>
+                      <a href="https://github.com/joeraut">
+                        <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                        </span>
+                      </a>
+                    </li>
+                    
+                    <li>
+                      <a href="https://joeraut.com/contact/">
+                        <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                        </span>
+                      </a>
+                    </li>
+                    
+                    <li>
+                      <a href="https://twitter.com/joeraut">
+                        <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                        </span>
+                      </a>
+                    </li>
+                    
+                    
+                  </ul>
+                  <p class="copyright text-muted"><a href="https://github.com/joeraut/joeraut.github.io">Source code</a> · Powered by <a href="https://gohugo.io/">Hugo</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    
+    <script src="https://joeraut.com/js/jquery.min.js"></script>
+
+    
+    <script src="https://joeraut.com/js/bootstrap.min.js"></script>
+
+    
+    <script src="https://joeraut.com/js/clean-blog.js"></script>
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-132837754-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+</body>
+
+</html>
+

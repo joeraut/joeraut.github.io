@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Software engineer and occasional blogger; passionate about good code, information security, IoT and machine learning.">
+    <meta name="author" content="Joseph Rautenbach">
+    <meta name="keywords" content="">
+
+    <title>Breaking things at Google&#39;s init.g Security Workshop | Joseph Rautenbach</title>
+
+    
+    <link rel="shortcut icon" href="https://joeraut.com/favicon.ico" type="image/x-icon" />
+    <link rel="mask-icon" href="https://joeraut.com/icons/safari-pinned-tab.svg" color="#545271" />
+    <link rel="apple-touch-icon" sizes="180x180" href="https://joeraut.com/icons/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Joseph Rautenbach" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="application-name" content="Joseph Rautenbach" />
+    <meta name="msapplication-starturl" content="" />
+    <meta name="msapplication-TileColor" content="#545271" />
+    <meta name="msapplication-TileImage" content="https://joeraut.com/icons/mstile-150x150.png" />
+    <link rel="manifest" href="https://joeraut.com/manifest.json" />
+
+    
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    
+    <link href="https://joeraut.com/css/clean-blog.min.css" rel="stylesheet"><link rel="stylesheet" type="text/css" href="https://joeraut.com/css/custom.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet'>
+
+    
+    
+    
+
+</head>
+
+<body>
+
+    
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="https://joeraut.com">Joseph Rautenbach</a>
+            </div>
+
+                       
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    
+                    <li>
+                        <a href="https://joeraut.com/about/">About</a>
+                    </li>
+                    
+                    <li>
+                        <a href="https://joeraut.com/posts/">Posts</a>
+                    </li>
+                    
+                    <li>
+                        <a href="https://joeraut.com/contact/">Contact</a>
+                    </li>
+                    
+                  </ul>
+            </div>
+           
+
+        </div>
+        
+    </nav>
+
+
+    
+    
+    <header class="intro-header" style="background-image: url('https://joeraut.com/images/posts/init.g/sunset.jpg')">
+      
+      <div class="container">
+        <div class="row">
+           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+             <div class="post-heading">
+               <h1>Breaking things at Google&#39;s init.g Security Workshop</h1>
+               <h2 class="subheading">A great learning experience at Google London</h2>
+               <span class="meta">
+                 5 November 2019
+
+               </span>
+             </div>
+           </div>
+        </div>
+      </div>
+    </header>
+
+    
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                  <p>Over the past weekend I was fortunate enough to attend init.g, an invite-only
+three-day cyber security workshop by Google for students from Europe, the Middle East and Africa,
+hosted in their London King&rsquo;s Cross office.</p>
+<p>Out of the 40 attendees, I was the only one traveling from South Africa, but I quickly
+met some fantastic folks and Google employees that made the workshop a blast!</p>
+<figure>
+    <img src="https://joeraut.com/images/posts/init.g/stairs.jpg"/> <figcaption>
+            <h4>Posting with some cool post-it note art</h4>
+        </figcaption>
+</figure>
+
+<p>We started the first day with a workshop on binary vulnerabilities, where we exploited buffer and stack
+overflows to do some magic like obtain root shells! (Un)fortunately, these attack vectors
+aren&rsquo;t so easy to find and exploit these days, so we looked into using more
+modern attacks such as <a href="https://en.wikipedia.org/wiki/Return-to-libc_attack">return-to-libc</a>,
+as well as modern defences.</p>
+<p>Day two involved a workshop on <a href="https://en.wikipedia.org/wiki/Fuzzing">fuzzing</a>,
+going over its history and playing with some early examples, and then writing some code that used
+<a href="https://llvm.org/docs/LibFuzzer.html">libFuzzer</a> to throw random data at programs
+to try and get them to exhibit some <em>interesting</em> behaviour (read: crashes!). Incredibly, it&rsquo;s
+relatively easy to write a fuzzer to catch the Heartbleed bug, asserting the significance of fuzzing.
+As we were at Google, it was obligatory to speak about the <a href="https://g.co/chromebugrewards">VRP rewards</a>
+on offer for finding vulnerabilities, and how fuzzing ties in nicely with the search.</p>
+<p>We then had an additional workshop on Android application hacking, which involved interacting with
+Android devices via ADB, decompiling and disassembling APKs, and then reverse-engineering disassembled
+code to find some flags!</p>
+<figure>
+    <img src="https://joeraut.com/images/posts/init.g/ctf_finals.jpg"/> <figcaption>
+            <h4>The Google CTF finals taking place</h4>
+        </figcaption>
+</figure>
+
+<p>The init.g event was held at the same time as the onsite final round of the <a href="https://capturetheflag.withgoogle.com/">Google CTF</a>,
+so we had the chance to watch some of the best teams in the world compete for big prizes and attend their awards ceremony.
+We were also able to try and defuse a fake bomb from the &ldquo;Having a Blast&rdquo; hardware CTF challenge&mdash;it blew up, sadly, but
+at least we live to tell the tale!</p>
+<p>Other highlights include presentations from top bughunters that had taken part in the Vulnerability Reward Program, where
+they explained how some of their discoveries were made; we also got to do mock interviews with Google engineers
+where we worked on preparing for the real deal. I also had the chance to spend a bit of time with
+<a href="https://www.youtube.com/channel/UClcE-kVhqyiHCcjYwcpfj9w">LiveOverflow</a>
+and <a href="https://www.youtube.com/user/RootOfTheNull">John Hammond</a>,
+two YouTubers with a focus on information security and breaking things that I have a great deal of respect for&mdash;kudos!</p>
+<p>The opportunity to attend these workshops and improve my skills was invaluable, and I was fortunate to
+meet some incredibly talented engineers and fellow attendees, and engage in many meaningful and
+thought-provoking discussions. I can&rsquo;t thank the organisers enough for the experience!</p>
+<p><figure>
+    <img src="https://joeraut.com/images/posts/init.g/london.jpg"/> <figcaption>
+            <h4>Some non-so-normal office views</h4>
+        </figcaption>
+</figure>
+
+<br>
+<figure>
+    <img src="https://joeraut.com/images/posts/init.g/ctf_finals_awards.jpg"/> <figcaption>
+            <h4>Google CTF Awards Ceremony</h4>
+        </figcaption>
+</figure>
+
+<br>
+<figure>
+    <img src="https://joeraut.com/images/posts/init.g/office_art.jpg"/> <figcaption>
+            <h4>Very creative Post-it Note office art</h4>
+        </figcaption>
+</figure>
+
+<br></p>
+
+                  
+   <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "devjoe" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <hr>
+    
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                  <ul class="list-inline text-center">
+                    
+                    
+                    
+                    <li>
+                      <a href="https://www.linkedin.com/in/joeraut/">
+                        <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                        </span>
+                      </a>
+                    </li>
+                    
+                    <li>
+                      <a href="https://github.com/joeraut">
+                        <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                        </span>
+                      </a>
+                    </li>
+                    
+                    <li>
+                      <a href="https://joeraut.com/contact/">
+                        <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                        </span>
+                      </a>
+                    </li>
+                    
+                    <li>
+                      <a href="https://twitter.com/joeraut">
+                        <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                        </span>
+                      </a>
+                    </li>
+                    
+                    
+                  </ul>
+                  <p class="copyright text-muted"><a href="https://github.com/joeraut/joeraut.github.io">Source code</a> · Powered by <a href="https://gohugo.io/">Hugo</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    
+    <script src="https://joeraut.com/js/jquery.min.js"></script>
+
+    
+    <script src="https://joeraut.com/js/bootstrap.min.js"></script>
+
+    
+    <script src="https://joeraut.com/js/clean-blog.js"></script>
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-132837754-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+</body>
+
+</html>
+

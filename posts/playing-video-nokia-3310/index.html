@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Software engineer and occasional blogger; passionate about good code, information security, IoT and machine learning.">
+    <meta name="author" content="Joseph Rautenbach">
+    <meta name="keywords" content="">
+
+    <title>Playing video on a Nokia 3310 LCD display with Arduino | Joseph Rautenbach</title>
+
+    
+    <link rel="shortcut icon" href="https://joeraut.com/favicon.ico" type="image/x-icon" />
+    <link rel="mask-icon" href="https://joeraut.com/icons/safari-pinned-tab.svg" color="#545271" />
+    <link rel="apple-touch-icon" sizes="180x180" href="https://joeraut.com/icons/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Joseph Rautenbach" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="application-name" content="Joseph Rautenbach" />
+    <meta name="msapplication-starturl" content="" />
+    <meta name="msapplication-TileColor" content="#545271" />
+    <meta name="msapplication-TileImage" content="https://joeraut.com/icons/mstile-150x150.png" />
+    <link rel="manifest" href="https://joeraut.com/manifest.json" />
+
+    
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    
+    <link href="https://joeraut.com/css/clean-blog.min.css" rel="stylesheet"><link rel="stylesheet" type="text/css" href="https://joeraut.com/css/custom.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet'>
+
+    
+    
+    
+
+</head>
+
+<body>
+
+    
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="https://joeraut.com">Joseph Rautenbach</a>
+            </div>
+
+                       
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    
+                    <li>
+                        <a href="https://joeraut.com/about/">About</a>
+                    </li>
+                    
+                    <li>
+                        <a href="https://joeraut.com/posts/">Posts</a>
+                    </li>
+                    
+                    <li>
+                        <a href="https://joeraut.com/contact/">Contact</a>
+                    </li>
+                    
+                  </ul>
+            </div>
+           
+
+        </div>
+        
+    </nav>
+
+
+    
+    
+    <header class="intro-header" style="background-image: url('https://joeraut.com/images/bg.png')">
+    
+      <div class="container">
+        <div class="row">
+           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+             <div class="post-heading">
+               <h1>Playing video on a Nokia 3310 LCD display with Arduino</h1>
+               <h2 class="subheading">Or: (ab)using monochrome displays</h2>
+               <span class="meta">
+                 26 December 2012
+
+               </span>
+             </div>
+           </div>
+        </div>
+      </div>
+    </header>
+
+    
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                  
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/FJBNF5x1_kA" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<h2 id="introduction">Introduction</h2>
+<p>The Nokia 3310 LCD is well known in the electronics community; I decided to have some fun and get it to do things the designers probably weren’t intending!</p>
+<p>This LCD is a monochrome graphics LCD with a resolution of 84×48 and while relatively old (1998), it’s great for its <em>very</em> low price (eBay, etc.)</p>
+<p>I wrote up some Processing and Arduino sketches to encode/decode video and play it on this Nokia LCD.</p>
+<h2 id="nokia-3310-lcd">Nokia 3310 LCD</h2>
+<p>The Nokia 3310 LCD uses the PCD8544 controller IC – it has an easy to use SPI protocol, and handles all the hard work of driving this display (multiplexing, generating bias voltages, ect.) Using the display is relatively easy with any microcontroller. I used a breakout board for ease of access on a breadboard/stripboard.</p>
+<h2 id="construction">Construction</h2>
+<p>Adafruit has written <a href="https://learn.adafruit.com/nokia-5110-3310-monochrome-lcd">a nice Arduino library and tutorial</a> for using this display. It was perfect for my needs, as their library can easily draw text, lines, rectangles, circles and other shapes to the display.</p>
+<p>I soldered up a simple shield for driving the display, and a few capacitive buttons. I used capacitive buttons as I didn&rsquo;t have any normal buttons on me. The piece of code I used for these buttons was found <a href="http://playground.arduino.cc/Code/CapacitiveSensor">here</a> on the Arduino site, and is connected directly to the buttons. No pull-up resistors were used in this case.
+The buttons were connected to the following pins:</p>
+<ul>
+<li>Select File – Pin 19 (analog A5)</li>
+<li>Toggle FPS – Pin 18 (analog A4)</li>
+<li>Play – Pin 17 (analog A3)</li>
+</ul>
+<p>Here are some images of the shield I made (I apologise for the messy soldering, I needed this done in a hurry):</p>
+<p><img src="https://joeraut.com/images/posts/playing-video-nokia-3310/IMG_3132.JPG" alt="Shield" title="Shield"></p>
+<p><img src="https://joeraut.com/images/posts/playing-video-nokia-3310/IMG_3140.JPG" alt="Shield" title="Shield"></p>
+<p><img src="https://joeraut.com/images/posts/playing-video-nokia-3310/IMG_3141.JPG" alt="Shield" title="Shield"></p>
+<h2 id="playing-video">Playing video</h2>
+<p>I came across <a href="http://www.youtube.com/watch?v=mx1C1ndIZuw">this video</a> of a similar monochrome display playing video, using an ATMega88 and SD card.
+The video looked like it was using <a href="http://en.wikipedia.org/wiki/Dither#Algorithms">1-bit dithering</a> to be visible on a monochrome display, and was very recognisable. It&rsquo;s worth a shot trying this with the Nokia LCD and Arduino, right?
+I had also purchased an Ethernet shield which happens to have a SD card slot, which was convenient.</p>
+<p>First of all, I came up with a format for saving my data. The encoded data file would consist of ASCII characters. If the ASCII character was from <code>0x00</code> to <code>0x3F</code> in hex (the first 6 bits, or from <code>B000000</code> to <code>B111111</code>) then it would be treated as data.
+If I wanted the first 6 pixels of the first row on the frame buffer to appear in this binary pattern: 101010 then I would set the character to be <code>0x2A</code> (<code>B101010</code>), and increases the X coordinate by 6. If I repeat this character, it would set the next 6 pixels to 101010, and so on. This is what is used to set the image of the display.
+When this is done 14 times, I end up with 84 pixels which is exactly the width of one of the rows of the display. Perfect fit!</p>
+<p>Now, if the ASCII character is over <code>0x3F</code> it is a control character. This is a command that can trigger a certain function in the program.
+Here are the control characters:</p>
+<ul>
+<li><code>0x7B</code> – New line – Increments the Y-axis by one, use this when you have written all 14 data characters for the row to go on to the next one and carry on sending your data.</li>
+<li><code>0x7C</code> – Reset the X and Y coordinates – Use this when you have filled up the whole display, and need to start at the beginning point for a new image.</li>
+<li><code>0x7D</code> – Update display – This sends the data in the frame buffer to the display and displays it.</li>
+</ul>
+<p>I wrote a Processing script to render a simple 3D Cube and save each frame to a file in the sketch’s project folder using the protocol above (code at the bottom of the page).</p>
+<p><img src="https://joeraut.com/images/posts/playing-video-nokia-3310/3dcube.png" alt="3D Cube" title="3D Cube"></p>
+<p>The script saved the data to a file called data.dat.
+Next, I formatted my MicroSD card with the FAT32 format, and copied the data.dat file onto it.</p>
+<p>Writing the Arduino video player program was the most difficult part. I used the SD library included with Arduino to read the files of the SD card and wrote up a file chooser what uses the buttons on the shield, and a routine to read data from the chosen file off the SD card, draw the images and handle the commands.
+Everything worked out OK in the end after a day of work, and I had a working product. However, I still needed to finish my goal of displaying video.</p>
+<p><img src="https://joeraut.com/images/posts/playing-video-nokia-3310/IMG_3148.JPG" alt="Shield" title="Shield"></p>
+<p>Next I did some research on Dithering. I then discovered <a href="http://www.evilmadscientist.com/2012/dithering/">Windell Oskay’s writeup</a> on Atkinson dithering and some Processing sample code. The example converted real-time video from a webcam to 1-bit dithered images – just what we need.
+I then modified the program with a output resolution of 84×48, and gave it a video as the input file. (If you want to use a different file, make sure it is 84×48 with fairly high contrast for best results with the dithering, though any resolution should still work fine.
+For the video, I decided to play the music video of Rick Astley’s “Never Gonna Give You Up” because, <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">well&hellip;</a></p>
+<p><img src="https://joeraut.com/images/posts/playing-video-nokia-3310/video_processing.png" alt="Video processing" title="Video processing"></p>
+<h2 id="source-code">Source code</h2>
+<ul>
+<li><a href="https://github.com/joeraut/processing-nokia3310-video-converter">Processing sketches for generating videos</a></li>
+<li><a href="https://github.com/joeraut/arduino-nokia3310-video-player/">Arduino sketch for video playback</a></li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>The results were impressive. I&rsquo;m satisfied with the 15FPS I got using C++ and the Arduino/Adafruit libraries. Improvements are definitely possible with using more raw methods of access to the SD card and display.</p>
+<p>It should be noted that the other version I had seen linked above had a higher resolution display and was running at half the clock speed (8Mhz compared to Arduino’s 16Mhz). This goes to show how optimisation can lead to better results.</p>
+
+                  
+   <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "devjoe" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <hr>
+    
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                  <ul class="list-inline text-center">
+                    
+                    
+                    
+                    <li>
+                      <a href="https://www.linkedin.com/in/joeraut/">
+                        <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                        </span>
+                      </a>
+                    </li>
+                    
+                    <li>
+                      <a href="https://github.com/joeraut">
+                        <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                        </span>
+                      </a>
+                    </li>
+                    
+                    <li>
+                      <a href="https://joeraut.com/contact/">
+                        <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                        </span>
+                      </a>
+                    </li>
+                    
+                    <li>
+                      <a href="https://twitter.com/joeraut">
+                        <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                        </span>
+                      </a>
+                    </li>
+                    
+                    
+                  </ul>
+                  <p class="copyright text-muted"><a href="https://github.com/joeraut/joeraut.github.io">Source code</a> · Powered by <a href="https://gohugo.io/">Hugo</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    
+    <script src="https://joeraut.com/js/jquery.min.js"></script>
+
+    
+    <script src="https://joeraut.com/js/bootstrap.min.js"></script>
+
+    
+    <script src="https://joeraut.com/js/clean-blog.js"></script>
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-132837754-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+</body>
+
+</html>
+

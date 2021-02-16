@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Joseph Rautenbach</title>
+    <link>https://joeraut.com/posts/</link>
+    <description>Recent content in Posts on Joseph Rautenbach</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>[Source code](https://github.com/joeraut/joeraut.github.io) &amp;middot; Powered by [Hugo](https://gohugo.io/)</copyright>
+    <lastBuildDate>Sun, 12 Jul 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://joeraut.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Displaying smooth-scrolling text on old character LCDs</title>
+      <link>https://joeraut.com/posts/smooth-scrolling-text-on-character-lcds/</link>
+      <pubDate>Sun, 12 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://joeraut.com/posts/smooth-scrolling-text-on-character-lcds/</guid>
+      <description>Update (17 July 2020): This got featured on Hackaday and Hackster News!
+Character LCDs have been around for a long time. These displays contain a number of discinct blocks—each capable of displaying a single character—so displaying scrolling text would traditionally involve just shifting characters left one block at a time. That&amp;rsquo;s fine and all, but why not try and raise the bar.. 😏
+Hardware Most character displays utilise the Hitachi HD44780 controller chip, which has the neat feature of letting us define and use up to eight custom characters, each 5x8 pixels in size.</description>
+    </item>
+    
+    <item>
+      <title>Breaking things at Google&#39;s init.g Security Workshop</title>
+      <link>https://joeraut.com/posts/init.g/</link>
+      <pubDate>Tue, 05 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://joeraut.com/posts/init.g/</guid>
+      <description>Over the past weekend I was fortunate enough to attend init.g, an invite-only three-day cyber security workshop by Google for students from Europe, the Middle East and Africa, hosted in their London King&amp;rsquo;s Cross office.
+Out of the 40 attendees, I was the only one traveling from South Africa, but I quickly met some fantastic folks and Google employees that made the workshop a blast!
+  Posting with some cool post-it note art   We started the first day with a workshop on binary vulnerabilities, where we exploited buffer and stack overflows to do some magic like obtain root shells!</description>
+    </item>
+    
+    <item>
+      <title>Setting up an Axis IP camera directly connected to a Mac via Ethernet</title>
+      <link>https://joeraut.com/posts/setup-axis-camera-on-mac/</link>
+      <pubDate>Sun, 08 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://joeraut.com/posts/setup-axis-camera-on-mac/</guid>
+      <description>I managed to get hold of a (very!) old Axis 207W IP camera, and faced an interesting challenge: I needed it to connect to my WiFi network, but configuring its WiFi settings requires an Ethernet connection.
+As I didn&amp;rsquo;t have an Ethernet switch or router at my university flat, I decided to try connecting it directly via Ethernet to my Macbook Pro, using a Thunderbolt to Ethernet adapter – no special crossover cable needed!</description>
+    </item>
+    
+    <item>
+      <title>Static sites: Migrating from Wordpress to Hugo</title>
+      <link>https://joeraut.com/posts/wordpress-to-hugo-migration/</link>
+      <pubDate>Mon, 08 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://joeraut.com/posts/wordpress-to-hugo-migration/</guid>
+      <description>I recently moved this site over from Wordpress to Hugo, a popular static site generator, and only wish I&amp;rsquo;d had made the switch sooner. (I&amp;rsquo;ve also open-sourced the site on GitHub.)
+After years of running Wordpress, I had grown frustrated with the bloated and high-maintenance nature of the CMS that it is. Keeping plugins updated and compatible required more time than it was worth, and writing posts became a chore with the constant vigilance required in ensuring correct formatting in its WYSIWYG editor.</description>
+    </item>
+    
+    <item>
+      <title>Converting LaTeX equations to images online with Docker and Node.js</title>
+      <link>https://joeraut.com/posts/latex-to-image-web/</link>
+      <pubDate>Mon, 21 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://joeraut.com/posts/latex-to-image-web/</guid>
+      <description>As a LaTeX user that occasionally needs to use Microsoft Word, I often convert LaTeX math equations to images to include them in the documents. Let&amp;rsquo;s build something to make it easy!
+I came up with Node.js web app that allows LaTeX math equations to be entered and converted to PNG/JPG/SVG images.
+For each conversion, Node.js starts an isolated Docker container with a LaTeX installation; it compiles the generated .tex file and converts it to an SVG vector image.</description>
+    </item>
+    
+    <item>
+      <title>SANReN Cyber Security Challenge 2017</title>
+      <link>https://joeraut.com/posts/sanren-csc-2017/</link>
+      <pubDate>Sun, 10 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://joeraut.com/posts/sanren-csc-2017/</guid>
+      <description>As part of Team BitPhase from Stellenbosch University, we made it to the final round of the inaugural 2017 SANReN Cyber Security Challenge in early December 2017, hosted in parallel with the annual 2017 CHPC Conference. We were fortunate to leave as the winning team of the Main challenge!
+Several days of awesome work for the Main challenge included reverse-engineering applications such as a fake bank app with the goal of transferring money from other fake accounts into their own, inspecting executables and ridiculously obfuscated code, cracking RSA encryption from a partial key, using steganographic and forensic techniques to retrieve data from innocent looking images or files that appeared damaged, identifying rootkits in a memory dump, as well as many other Capture the Flag-like challenges.</description>
+    </item>
+    
+    <item>
+      <title>A go at the AWS IoT Hackathon</title>
+      <link>https://joeraut.com/posts/aws-summit-hackathon-2017/</link>
+      <pubDate>Thu, 06 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://joeraut.com/posts/aws-summit-hackathon-2017/</guid>
+      <description>A couple friends and I participated in the Amazon AWS Cape Town Summit’s IoT Hackathon, which Intel kindly sponsored. Given an Arduino 101 (containing an Intel® Curie™) and a Grove starter kit, we had a couple of hours to have fun and see what we could hack together. As we were new to AWS’s IoT platform and the Python libraries we were given, it took us some time to get it up and running but we ended up with a working prototype.</description>
+    </item>
+    
+    <item>
+      <title>Building a temperature-controlled Peltier Mini Fridge</title>
+      <link>https://joeraut.com/posts/peltier-mini-fridge/</link>
+      <pubDate>Fri, 03 Apr 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://joeraut.com/posts/peltier-mini-fridge/</guid>
+      <description>Update: Project featured on Hackaday!
+I recently finished up on my Peltier Mini fridge project, and it works great! It can cool down whatever you want that’ll fit in it – six 330ml cans for example – and can get down to –2.1°C! Watch the video for a full description and how it works. I gotta say, it’s really cool, excuse the pun!
+  It is built using a Peltier Thermoelectric cooler module which is a ceramic plate but with many p and n-type semiconductors placed in series inside it.</description>
+    </item>
+    
+    <item>
+      <title>Cree LED Flashlight mod – Disabling different modes (Sipik SK68 Clone)</title>
+      <link>https://joeraut.com/posts/cree-flashlight-mode-mod/</link>
+      <pubDate>Sat, 20 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://joeraut.com/posts/cree-flashlight-mode-mod/</guid>
+      <description>Around a month ago I purchased a Sipik SK68 LED flashlight clone on eBay, for a grand total of $4.04! Shipping took around three weeks which isn’t bad considering it was free, but when I started using it there was a rather annoying design flaw..
+The Flashlight It is focusable and runs on one AA 1.5V battery, or one 14500 3.7V lithium battery. The brightness with a 14500 battery is around 300 lumens which is seriously bright.</description>
+    </item>
+    
+    <item>
+      <title>Bitmap images on character LCDs</title>
+      <link>https://joeraut.com/posts/bitmap-images-on-character-lcds/</link>
+      <pubDate>Sun, 27 Oct 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://joeraut.com/posts/bitmap-images-on-character-lcds/</guid>
+      <description>Character LCDs are displays that consist of many character “blocks”, and each block can display a letter, number, etc. A display controller in widespread use is the Hitachi HD44780 driver. I have talked about this in a previous post on reverse engineering a printer LCD.
+HD44780-based character LCDs usually come in common sizes such as 16×2 (16 characters per line, two lines), 8×2, 20×2 20×4, using the 8-bit ASCII character set.</description>
+    </item>
+    
+    <item>
+      <title>Interfacing with a salvaged LCD character display</title>
+      <link>https://joeraut.com/posts/interfacing-salvaged-lcd-display/</link>
+      <pubDate>Mon, 27 May 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://joeraut.com/posts/interfacing-salvaged-lcd-display/</guid>
+      <description>A few weekends ago I got hold of an old broken Canon printer/scanner combo. It featured a pretty neat looking 20x2 character LCD display. Let&amp;rsquo;s get it working!
+Reverse engineering When removing the display, I noticed something very interesting in that the display was just a glass panel and had a ribbon cable attached to it that had only 14 pins. This meant that there was something special with this display in that the display circuitry for driving the display was all built inside the glass – known as a Chip on Glass display.</description>
+    </item>
+    
+    <item>
+      <title>Playing video on a Nokia 3310 LCD display with Arduino</title>
+      <link>https://joeraut.com/posts/playing-video-nokia-3310/</link>
+      <pubDate>Wed, 26 Dec 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://joeraut.com/posts/playing-video-nokia-3310/</guid>
+      <description>Introduction The Nokia 3310 LCD is well known in the electronics community; I decided to have some fun and get it to do things the designers probably weren’t intending!
+This LCD is a monochrome graphics LCD with a resolution of 84×48 and while relatively old (1998), it’s great for its very low price (eBay, etc.)
+I wrote up some Processing and Arduino sketches to encode/decode video and play it on this Nokia LCD.</description>
+    </item>
+    
+    <item>
+      <title>G3ECS Makerspace</title>
+      <link>https://joeraut.com/posts/g3ecs-hackerspace/</link>
+      <pubDate>Tue, 06 Mar 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://joeraut.com/posts/g3ecs-hackerspace/</guid>
+      <description>I&amp;rsquo;ve involved myself in founding the George Education Electronics Engineering &amp;amp; Computer Society (a.k.a. G3ECS) for a while now, and have been having a fantastic time doing it.
+Anyone living in the George/Garden Route area of ZA should really check this out. We have a huge variety of people attending from all ages, and are working on some cool things – robots, etc.</description>
+    </item>
+    
+  </channel>
+</rss>
