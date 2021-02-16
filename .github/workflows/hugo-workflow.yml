@@ -24,7 +24,7 @@ jobs:
       -
         name: Create `last-deployed.html` file
         if: success()
-        run: echo "Last deployed on $(date -u)." > public/last-deployed.html
+        run: echo "Last deployed on $(date -u +'%Y-%m-%d %H:%M:%S UTC')." > public/last-deployed.html
       -
         name: Deploy to GitHub Pages
         if: success()
